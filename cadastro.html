@@ -1,281 +1,208 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPEhtml>
+<htmllang="pt-BR">
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Criar conta - PokéCommunity</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-
-            margin: 0;
-
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-family: Arial, sans-serif;
-
-            background: #0d1117;
-
-            color: white;
-
-            padding: 20px;
-        }
-
-        .box {
-
-            width: 100%;
-
-            max-width: 420px;
-
-            background: #161d27;
-
-            border: 1px solid #303b4c;
-
-            border-radius: 18px;
-
-            padding: 30px;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        .logo {
-
-            text-align: center;
-
-            font-size: 28px;
-
-            font-weight: bold;
-
-            margin-bottom: 25px;
-        }
-
-        .logo span {
-            color: #e63946;
-        }
-
-        h1 {
-
-            text-align: center;
-
-            margin-top: 0;
-
-            margin-bottom: 25px;
-        }
-
-        input {
-
-            width: 100%;
-
-            padding: 14px;
-
-            margin-bottom: 15px;
-
-            border-radius: 10px;
-
-            border: 1px solid #303b4c;
-
-            background: #0d1117;
-
-            color: white;
-
-            font-size: 16px;
-
-            outline: none;
-        }
-
-        input:focus {
-
-            border-color: #e63946;
-        }
-
-        input::placeholder {
-            color: #8b949e;
-        }
-
-        button {
-
-            width: 100%;
-
-            padding: 14px;
-
-            border: 0;
-
-            border-radius: 10px;
-
-            background: #e63946;
-
-            color: white;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        button:hover {
-
-            background: #ff4d5a;
-
-            transform: translateY(-1px);
-        }
-
-        button:active {
-
-            transform: translateY(0);
-        }
-
-        .link {
-
-            display: block;
-
-            text-align: center;
-
-            margin-top: 20px;
-
-            color: #e63946;
-
-            text-decoration: none;
-
-            font-size: 15px;
-        }
-
-        .link:hover {
-
-            text-decoration: underline;
-        }
-
-        #message {
-
-            text-align: center;
-
-            margin-top: 15px;
-
-            min-height: 20px;
-
-            color: #ffb4b4;
-
-            font-size: 14px;
-        }
-
-    </style>
+<metacharset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<title>Criarconta-PokéCommunity</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:Arial,sans-serif;
+background:#0d1117;
+color:white;
+padding:20px;
+}
+
+.box{
+width:100%;
+max-width:420px;
+background:#161d27;
+border:1pxsolid#303b4c;
+border-radius:18px;
+padding:30px;
+box-shadow:
+010px30pxrgba(0,0,0,0.35);
+}
+
+.logo{
+text-align:center;
+font-size:28px;
+font-weight:bold;
+margin-bottom:25px;
+}
+
+.logospan{
+color:#e63946;
+}
+
+h1{
+text-align:center;
+margin-top:0;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border-radius:10px;
+border:1pxsolid#303b4c;
+background:#0d1117;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+input:focus{
+border-color:#e63946;
+}
+
+input::placeholder{
+color:#8b949e;
+}
+
+button{
+width:100%;
+padding:14px;
+border:0;
+border-radius:10px;
+background:#e63946;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+background:#ff4d5a;
+transform:translateY(-1px);
+}
+
+button:active{
+transform:translateY(0);
+}
+
+.link{
+display:block;
+text-align:center;
+margin-top:20px;
+color:#e63946;
+text-decoration:none;
+font-size:15px;
+}
+
+.link:hover{
+text-decoration:underline;
+}
+
+#message{
+text-align:center;
+margin-top:15px;
+min-height:20px;
+color:#ffb4b4;
+font-size:14px;
+}
+
+</style>
 
 </head>
 
 <body>
 
+<divclass="box">
 
-    <div class="box">
+<divclass="logo">
+⚡Poké<span>Community</span>
+</div>
 
+<h1>
+Criarconta
+</h1>
 
-        <div class="logo">
+<formid="registerForm">
 
-            ⚡ Poké<span>Community</span>
+<input
+type="text"
+id="username"
+placeholder="Nomedeusuário"
+autocomplete="username"
+minlength="3"
+maxlength="20"
+required
+>
 
-        </div>
+<input
+type="email"
+id="email"
+placeholder="Seue-mail"
+autocomplete="email"
+required
+>
 
+<input
+type="password"
+id="password"
+placeholder="Crieumasenha"
+autocomplete="new-password"
+minlength="6"
+required
+>
 
-        <h1>
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirmesuasenha"
+autocomplete="new-password"
+minlength="6"
+required
+>
 
-            Criar conta
+<buttontype="submit">
+Criarconta
+</button>
 
-        </h1>
+</form>
 
+<pid="message"></p>
 
-        <form id="registerForm">
+<a
+class="link"
+href="login.html"
+>
+Játenhoumaconta
+</a>
 
+<a
+class="link"
+href="index.html"
+>
+Voltarparaosite
+</a>
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Seu e-mail"
-                autocomplete="email"
-                required
-            >
+</div>
 
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Crie uma senha"
-                autocomplete="new-password"
-                minlength="6"
-                required
-            >
-
-
-            <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirme sua senha"
-                autocomplete="new-password"
-                minlength="6"
-                required
-            >
-
-
-            <button type="submit">
-
-                Criar conta
-
-            </button>
-
-
-        </form>
-
-
-        <p id="message"></p>
-
-
-        <a
-            class="link"
-            href="login.html"
-        >
-
-            Já tenho uma conta
-
-        </a>
-
-
-        <a
-            class="link"
-            href="index.html"
-        >
-
-            Voltar para o site
-
-        </a>
-
-
-    </div>
-
-
-    <script
-        type="module"
-        src="auth.js"
-    ></script>
-
+<script
+type="module"
+src="auth.js"
+></script>
 
 </body>
 
