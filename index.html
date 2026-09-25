@@ -645,486 +645,221 @@ Uma comunidade criada por fãs de Pokémon.
 </p>
 </footer>
 <script>
-/* =========================================
-   CONFIGURAÇÃO DA POKEDEX
-========================================= */
-const TOTAL_POKEMON = 1025;
-const POKEMON_POR_PAGINA = 24;
-let todosPokemon = [];
-let pokemonFiltrados = [];
-let paginaAtual = 1;
-let nomesPortugues = {};
-let nomesCarregados = false;
-/* ELEMENTOS */
-const pokemonList =
-document.getElementById("pokemonList");
-const featured =
-document.getElementById("featured");
-const pokemonSearch =
-document.getElementById("pokemonSearch");
-const searchButton =
-document.getElementById("searchButton");
-const pokedexStatus =
-document.getElementById("pokedexStatus");
-const prevPage =
-document.getElementById("prevPage");
-const nextPage =
-document.getElementById("nextPage");
-const pageInfo =
-document.getElementById("pageInfo");
-/* =========================================
-   TIPOS EM PORTUGUÊS
-========================================= */
+
+const pokemonList = document.getElementById("pokemonList");
+const featured = document.getElementById("featured");
+const searchInput = document.getElementById("pokemonSearch");
+
 const tipos = {
-normal: {
-nome: "Normal",
-simbolo: "⚪"
-},
-fire: {
-nome: "Fogo",
-simbolo: "🔥"
-},
-water: {
-nome: "Água",
-simbolo: "💧"
-},
-electric: {
-nome: "Elétrico",
-simbolo: "⚡"
-},
-grass: {
-nome: "Planta",
-simbolo: "🌿"
-},
-ice: {
-nome: "Gelo",
-simbolo: "❄️"
-},
-fighting: {
-nome: "Lutador",
-simbolo: "🥊"
-},
-poison: {
-nome: "Veneno",
-simbolo: "☠️"
-},
-ground: {
-nome: "Terrestre",
-simbolo: "🌍"
-},
-flying: {
-nome: "Voador",
-simbolo: "🪽"
-},
-psychic: {
-nome: "Psíquico",
-simbolo: "🔮"
-},
-bug: {
-nome: "Inseto",
-simbolo: "🐛"
-},
-rock: {
-nome: "Pedra",
-simbolo: "🪨"
-},
-ghost: {
-nome: "Fantasma",
-simbolo: "👻"
-},
-dragon: {
-nome: "Dragão",
-simbolo: "🐉"
-},
-dark: {
-nome: "Sombrio",
-simbolo: "🌑"
-},
-steel: {
-nome: "Aço",
-simbolo: "⚙️"
-},
-fairy: {
-nome: "Fada",
-simbolo: "🧚"
-}
+    normal: ["⚪", "Normal"],
+    fire: ["🔥", "Fogo"],
+    water: ["💧", "Água"],
+    electric: ["⚡", "Elétrico"],
+    grass: ["🌿", "Planta"],
+    ice: ["❄️", "Gelo"],
+    fighting: ["🥊", "Lutador"],
+    poison: ["☠️", "Veneno"],
+    ground: ["🌍", "Terrestre"],
+    flying: ["🪽", "Voador"],
+    psychic: ["🔮", "Psíquico"],
+    bug: ["🐛", "Inseto"],
+    rock: ["🪨", "Pedra"],
+    ghost: ["👻", "Fantasma"],
+    dragon: ["🐉", "Dragão"],
+    dark: ["🌑", "Sombrio"],
+    steel: ["⚙️", "Aço"],
+    fairy: ["🧚", "Fada"]
 };
-/* =========================================
-   CARREGAR LISTA DOS 1025 POKÉMON
-========================================= */
-async function carregarListaPokemon() {
-    try {
-        pokedexStatus.textContent =
-            "Carregando lista da Pokédex...";
-        const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon?limit=${TOTAL_POKEMON}`
-        );
-        const data = await response.json();
-        todosPokemon = data.results.map(
-            (pokemon, index) => {
-                return {
-                    id: index + 1,
-                    nomeOriginal: pokemon.name,
-                    nome: pokemon.name
-                };
-            }
-        );
-        pokemonFiltrados = [...todosPokemon];
-        pokedexStatus.textContent =
-            `${TOTAL_POKEMON} Pokémon encontrados.`;
-        mostrarPagina();
-    } catch (error) {
-        console.error(error);
-        pokedexStatus.textContent =
-            "Erro ao carregar a Pokédex.";
+
+function nomeTipo(tipo) {
+    if (tipos[tipo]) {
+        return tipos[tipo][0] + " " + tipos[tipo][1];
     }
+
+    return tipo;
 }
-/* =========================================
-   PEGAR NOME EM PORTUGUÊS
-========================================= */
-async function pegarNomePortugues(id, nomeOriginal) {
-    if (nomesPortugues[id]) {
-        return nomesPortugues[id];
-    }
-    try {
-        const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon-species/${id}`
-        );
-        const data = await response.json();
-        const nomePT =
-            data.names.find(
-                nome =>
-                    nome.language.name === "pt-BR"
-            );
-        if (nomePT) {
-            nomesPortugues[id] =
-                nomePT.name;
-        } else {
-            const nomePTPortugal =
-                data.names.find(
-                    nome =>
-                        nome.language.name === "pt"
-                );
-            nomesPortugues[id] =
-                nomePTPortugal
-                    ? nomePTPortugal.name
-                    : nomeOriginal;
-        }
-        return nomesPortugues[id];
-    } catch (error) {
-        console.error(
-            "Erro ao pegar nome:",
-            id
-        );
-        return nomeOriginal;
-    }
-}
-/* =========================================
-   CARREGAR POKÉMON DA PÁGINA
-========================================= */
-async function mostrarPagina() {
-    pokemonList.innerHTML = "";
-    const inicio =
-        (paginaAtual - 1) *
-        POKEMON_POR_PAGINA;
-    const fim =
-        inicio + POKEMON_POR_PAGINA;
-    const pagina =
-        pokemonFiltrados.slice(
-            inicio,
-            fim
-        );
-    if (pagina.length === 0) {
-        pokemonList.innerHTML = `
-            <p style="color:#ff6b6b;">
-                Nenhum Pokémon encontrado 😢
-            </p>
-        `;
-        atualizarPaginacao();
-        return;
-    }
-    pokedexStatus.textContent =
-        `Carregando Pokémon ${inicio + 1} até ${Math.min(
-            fim,
-            pokemonFiltrados.length
-        )}...`;
-    for (const pokemon of pagina) {
-        try {
-            const response =
-                await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${pokemon.id}`
-                );
-            const data =
-                await response.json();
-            const nomePT =
-                await pegarNomePortugues(
-                    pokemon.id,
-                    pokemon.nomeOriginal
-                );
-            criarPokemonCard(
-                data,
-                pokemonList,
-                nomePT
-            );
-        } catch (error) {
-            console.error(
-                "Erro no Pokémon:",
-                pokemon.id
-            );
-        }
-    }
-    pokedexStatus.textContent =
-        `${pokemonFiltrados.length} Pokémon encontrados`;
-    atualizarPaginacao();
-}
-/* =========================================
-   CRIAR CARD
-========================================= */
-function criarPokemonCard(
-    pokemon,
-    container,
-    nomePT
-) {
-    const div =
-        document.createElement("div");
+
+function criarCard(pokemon, container) {
+
+    const div = document.createElement("div");
+
     div.className = "pokemon";
+
     const imagem =
-        pokemon.sprites.other["official-artwork"].front_default
-        ||
+        pokemon.sprites.other["official-artwork"].front_default ||
         pokemon.sprites.front_default;
-    const tiposHTML =
-        pokemon.types.map(
-            tipo => {
-                const tipoInfo =
-                    tipos[tipo.type.name];
-                if (!tipoInfo) {
-                    return "";
-                }
-                return `
-                    <span
-                        class="type type-${tipo.type.name}"
-                    >
-                        ${tipoInfo.simbolo}
-                        ${tipoInfo.nome}
-                    </span>
-                `;
-            }
-        ).join("");
+
+    const tiposPokemon = pokemon.types
+        .map(t => nomeTipo(t.type.name))
+        .join(" / ");
+
     div.innerHTML = `
         <img
             src="${imagem}"
-            alt="${nomePT}"
-            loading="lazy"
+            alt="${pokemon.name}"
         >
+
         <div class="pokemon-id">
             #${String(pokemon.id).padStart(4, "0")}
         </div>
+
         <h3>
-            ${nomePT}
+            ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         </h3>
-        <div class="pokemon-types">
-            ${tiposHTML}
-        </div>
+
+        <p style="color:#9da7b3;margin-top:8px;">
+            ${tiposPokemon}
+        </p>
     `;
+
     container.appendChild(div);
 }
-/* =========================================
-   BUSCA
-========================================= */
-async function buscarPokemon() {
-    const busca =
-        pokemonSearch.value
-            .trim()
-            .toLowerCase();
-    if (!busca) {
-        pokemonFiltrados =
-            [...todosPokemon];
-        paginaAtual = 1;
-        mostrarPagina();
-        return;
-    }
-    /* PRIMEIRO TENTA POR NÚMERO */
-    if (
-        !isNaN(busca) &&
-        Number(busca) >= 1 &&
-        Number(busca) <= TOTAL_POKEMON
-    ) {
-        pokemonFiltrados =
-            todosPokemon.filter(
-                pokemon =>
-                    pokemon.id === Number(busca)
-            );
-        paginaAtual = 1;
-        mostrarPagina();
-        return;
-    }
-    /* PROCURA PELO NOME ORIGINAL */
-    const resultadoOriginal =
-        todosPokemon.filter(
-            pokemon =>
-                pokemon.nomeOriginal
-                    .toLowerCase()
-                    .includes(busca)
+
+
+/* POKÉMON INICIAIS */
+
+async function carregarPokemon() {
+
+    pokemonList.innerHTML =
+        "<p>Carregando Pokédex...</p>";
+
+    try {
+
+        const resposta = await fetch(
+            "https://pokeapi.co/api/v2/pokemon?limit=151"
         );
-    if (resultadoOriginal.length > 0) {
-        pokemonFiltrados =
-            resultadoOriginal;
-        paginaAtual = 1;
-        mostrarPagina();
-        return;
-    }
-    /* PROCURA EM PORTUGUÊS */
-    pokedexStatus.textContent =
-        "Procurando pelo nome em português...";
-    const encontrados = [];
-    for (
-        const pokemon
-        of todosPokemon
-    ) {
-        const nomePT =
-            await pegarNomePortugues(
-                pokemon.id,
-                pokemon.nomeOriginal
-            );
-        if (
-            nomePT
-                .toLowerCase()
-                .includes(busca)
-        ) {
-            encontrados.push(
-                pokemon
+
+        const dados = await resposta.json();
+
+        pokemonList.innerHTML = "";
+
+        for (const pokemon of dados.results) {
+
+            const respostaPokemon =
+                await fetch(pokemon.url);
+
+            const dadosPokemon =
+                await respostaPokemon.json();
+
+            criarCard(
+                dadosPokemon,
+                pokemonList
             );
         }
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        pokemonList.innerHTML = `
+            <p style="color:#ff6b6b;">
+                Não foi possível carregar a Pokédex.
+            </p>
+        `;
     }
-    pokemonFiltrados =
-        encontrados;
-    paginaAtual = 1;
-    if (encontrados.length === 0) {
+}
+
+
+/* PESQUISA */
+
+async function searchPokemon() {
+
+    const busca =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    if (!busca) {
+
+        carregarPokemon();
+
+        return;
+    }
+
+    pokemonList.innerHTML =
+        "<p>Procurando...</p>";
+
+    try {
+
+        const resposta = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${busca}`
+        );
+
+        if (!resposta.ok) {
+            throw new Error();
+        }
+
+        const pokemon =
+            await resposta.json();
+
+        pokemonList.innerHTML = "";
+
+        criarCard(
+            pokemon,
+            pokemonList
+        );
+
+    } catch {
+
         pokemonList.innerHTML = `
             <p style="color:#ff6b6b;">
                 Pokémon não encontrado 😢
             </p>
         `;
-        pokedexStatus.textContent =
-            "Nenhum Pokémon encontrado.";
-        atualizarPaginacao();
-        return;
     }
-    mostrarPagina();
 }
-/* =========================================
-   PAGINAÇÃO
-========================================= */
-function atualizarPaginacao() {
-    const totalPaginas =
-        Math.max(
-            1,
-            Math.ceil(
-                pokemonFiltrados.length /
-                POKEMON_POR_PAGINA
-            )
-        );
-    pageInfo.textContent =
-        `Página ${paginaAtual} de ${totalPaginas}`;
-    prevPage.disabled =
-        paginaAtual <= 1;
-    nextPage.disabled =
-        paginaAtual >= totalPaginas;
-}
-/* ANTERIOR */
-prevPage.addEventListener(
-    "click",
-    () => {
-        if (paginaAtual > 1) {
-            paginaAtual--;
-            mostrarPagina();
-            document
-                .getElementById("pokedex")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-        }
-    }
-);
-/* PRÓXIMA */
-nextPage.addEventListener(
-    "click",
-    () => {
-        const totalPaginas =
-            Math.ceil(
-                pokemonFiltrados.length /
-                POKEMON_POR_PAGINA
-            );
-        if (
-            paginaAtual <
-            totalPaginas
-        ) {
-            paginaAtual++;
-            mostrarPagina();
-            document
-                .getElementById("pokedex")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-        }
-    }
-);
-/* BOTÃO BUSCAR */
-searchButton.addEventListener(
-    "click",
-    buscarPokemon
-);
+
+
 /* ENTER */
-pokemonSearch.addEventListener(
+
+searchInput.addEventListener(
     "keydown",
-    event => {
-        if (
-            event.key === "Enter"
-        ) {
-            buscarPokemon();
+    function(event) {
+
+        if (event.key === "Enter") {
+            searchPokemon();
         }
+
     }
 );
-/* =========================================
-   POKÉMON EM DESTAQUE
-========================================= */
+
+
+/* DESTAQUES */
+
 async function carregarDestaques() {
-    const ids =
-        [25, 6, 150, 149];
-    for (
-        const id
-        of ids
-    ) {
+
+    const ids = [25, 6, 150, 149];
+
+    for (const id of ids) {
+
         try {
-            const response =
+
+            const resposta =
                 await fetch(
                     `https://pokeapi.co/api/v2/pokemon/${id}`
                 );
+
             const pokemon =
-                await response.json();
-            const nomePT =
-                await pegarNomePortugues(
-                    id,
-                    pokemon.name
-                );
-            criarPokemonCard(
+                await resposta.json();
+
+            criarCard(
                 pokemon,
-                featured,
-                nomePT
+                featured
             );
-        } catch (error) {
-            console.error(
-                "Erro no destaque:",
-                error
-            );
+
+        } catch (erro) {
+
+            console.error(erro);
+
         }
     }
 }
-/* =========================================
-   INICIAR SITE
-========================================= */
-carregarListaPokemon();
+
+
+/* INICIAR */
+
+carregarPokemon();
+
 carregarDestaques();
+
 </script>
-</body>
-</html>
