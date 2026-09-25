@@ -1,6 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 const SUPABASE_URL = "https://obyxjtbdwgafrmfoefof.supabase.co";
+
 const SUPABASE_KEY = "sb_publishable_shEbDUHdpbrOISJeEG1F1Q_67lDSoNR";
 
 const supabase = createClient(
@@ -9,15 +10,15 @@ const supabase = createClient(
 );
 
 
-// ================================
+// ========================================
 // CADASTRO
-// ================================
+// ========================================
 
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
 
-    registerForm.addEventListener("submit", async (event) => {
+    registerForm.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
@@ -44,6 +45,8 @@ if (registerForm) {
 
         if (username.length < 3) {
 
+            message.style.color = "#ff6b6b";
+
             message.textContent =
                 "O nome de usuário precisa ter pelo menos 3 caracteres.";
 
@@ -53,16 +56,9 @@ if (registerForm) {
 
         // Verificar senha
 
-        if (password !== confirmPassword) {
-
-            message.textContent =
-                "As senhas não são iguais.";
-
-            return;
-        }
-
-
         if (password.length < 6) {
+
+            message.style.color = "#ff6b6b";
 
             message.textContent =
                 "A senha precisa ter pelo menos 6 caracteres.";
@@ -71,11 +67,26 @@ if (registerForm) {
         }
 
 
+        // Verificar confirmação da senha
+
+        if (password !== confirmPassword) {
+
+            message.style.color = "#ff6b6b";
+
+            message.textContent =
+                "As senhas não são iguais.";
+
+            return;
+        }
+
+
+        message.style.color = "#ffffff";
+
         message.textContent =
             "Criando sua conta...";
 
 
-        // Criar usuário
+        // Criar conta no Supabase
 
         const { error } =
             await supabase.auth.signUp({
@@ -85,6 +96,9 @@ if (registerForm) {
                 password: password,
 
                 options: {
+
+                    emailRedirectTo:
+                        "https://darkkk7.github.io/pokemon-community/confirmar.html",
 
                     data: {
 
@@ -97,7 +111,11 @@ if (registerForm) {
             });
 
 
+        // Verificar erro
+
         if (error) {
+
+            console.error(error);
 
             message.style.color = "#ff6b6b";
 
@@ -107,6 +125,8 @@ if (registerForm) {
             return;
         }
 
+
+        // Sucesso
 
         message.style.color = "#70e000";
 
@@ -118,9 +138,9 @@ if (registerForm) {
 }
 
 
-// ================================
+// ========================================
 // LOGIN
-// ================================
+// ========================================
 
 const loginForm =
     document.getElementById("loginForm");
@@ -128,7 +148,7 @@ const loginForm =
 
 if (loginForm) {
 
-    loginForm.addEventListener("submit", async (event) => {
+    loginForm.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
@@ -149,6 +169,8 @@ if (loginForm) {
             "Entrando...";
 
 
+        // Fazer login
+
         const { error } =
             await supabase.auth.signInWithPassword({
 
@@ -159,7 +181,11 @@ if (loginForm) {
             });
 
 
+        // Verificar erro
+
         if (error) {
+
+            console.error(error);
 
             message.style.color = "#ff6b6b";
 
@@ -170,13 +196,17 @@ if (loginForm) {
         }
 
 
+        // Login realizado
+
         message.style.color = "#70e000";
 
         message.textContent =
             "Login realizado com sucesso!";
 
 
-        setTimeout(() => {
+        // Voltar para o site
+
+        setTimeout(function() {
 
             window.location.href =
                 "index.html";
