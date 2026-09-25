@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PokéCommunity</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0d1117;
+    color: white;
+}
+
+/* HEADER */
+
+header {
+    background: #151b24;
+    border-bottom: 2px solid #e63946;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #e63946;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e63946;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background:
+    linear-gradient(rgba(13,17,23,.75), rgba(13,17,23,.95)),
+    url("https://images.unsplash.com/photo-1606503153255-59d8b8b8212f?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #e63946;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #c9d1d9;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e63946;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #ff4d5a;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.section-title span {
+    color: #e63946;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #161d27;
+    border: 1px solid #252f3d;
+    border-radius: 15px;
+    padding: 20px;
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #e63946;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #9da7b3;
+    line-height: 1.5;
+}
+
+/* POKEMON */
+
+.search-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-area input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #303b4c;
+    background: #161d27;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.pokemon {
+    background: #161d27;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #252f3d;
+    transition: .2s;
+}
+
+.pokemon:hover {
+    transform: translateY(-5px);
+    border-color: #e63946;
+}
+
+.pokemon img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.pokemon h3 {
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+.pokemon-id {
+    color: #8b949e;
+    font-size: 14px;
+}
+
+/* COMMUNITY */
+
+.community {
+    background: #111821;
+}
+
+.post {
+    background: #161d27;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #252f3d;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background: #e63946;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.post p {
+    color: #d0d7de;
+    line-height: 1.5;
+}
+
+.actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+    color: #8b949e;
+}
+
+/* NEWS */
+
+.news-card {
+    background: #161d27;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #252f3d;
+}
+
+.news-image {
+    height: 150px;
+    background: linear-gradient(135deg, #e63946, #7b1e28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-content p {
+    color: #9da7b3;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #080b10;
+    color: #8b949e;
+    margin-top: 30px;
+}
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 7px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .search-area {
+        flex-direction: column;
+    }
+
+    .search-area .btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+⚡ Poké<span>Community</span>
+</div>
+
+<nav>
+<a href="#inicio">Início</a>
+<a href="#pokedex">Pokédex</a>
+<a href="#comunidade">Comunidade</a>
+<a href="#noticias">Notícias</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+<div class="hero-content">
+
+<h1>
+Bem-vindo à <span>PokéCommunity</span>
+</h1>
+
+<p>
+A comunidade para quem realmente gosta de Pokémon.
+Explore, converse, monte seu time e compartilhe suas aventuras.
+</p>
+
+<a href="#pokedex" class="btn">
+Explorar Pokédex
+</a>
+
+</div>
+
+</section>
+
+
+<!-- DESTAQUES -->
+
+<section class="container">
+
+<h2 class="section-title">
+🔥 Pokémon <span>em destaque</span>
+</h2>
+
+<div class="pokemon-grid" id="featured"></div>
+
+</section>
+
+
+<!-- POKEDEX -->
+
+<section class="container" id="pokedex">
+
+<h2 class="section-title">
+📖 <span>Pokédex</span>
+</h2>
+
+<div class="search-area">
+
+<input
+type="text"
+id="pokemonSearch"
+placeholder="Digite o nome ou número do Pokémon..."
+>
+
+<button class="btn" onclick="searchPokemon()">
+Buscar
+</button>
+
+</div>
+
+<div class="pokemon-grid" id="pokemonList">
+
+<p>Carregando Pokémon...</p>
+
+</div>
+
+</section>
+
+
+<!-- COMUNIDADE -->
+
+<section class="community" id="comunidade">
+
+<div class="container">
+
+<h2 class="section-title">
+👥 Nossa <span>Comunidade</span>
+</h2>
+
+
+<div class="post">
+
+<div class="user">
+
+<div class="avatar">
+A
+</div>
+
+<div>
+<strong>AshTrainer</strong>
+<br>
+<small style="color:#8b949e">
+há 10 minutos
+</small>
+</div>
+
+</div>
+
+<p>
+Qual Pokémon vocês escolheriam para começar uma nova aventura?
+Eu iria de Charizard! 🔥
+</p>
+
+<div class="actions">
+<span>❤️ 24</span>
+<span>💬 8</span>
+<span>🔗 Compartilhar</span>
+</div>
+
+</div>
+
+
+<div class="post">
+
+<div class="user">
+
+<div class="avatar">
+M
+</div>
+
+<div>
+<strong>MistyBlue</strong>
+<br>
+<small style="color:#8b949e">
+há 35 minutos
+</small>
+</div>
+
+</div>
+
+<p>
+Acabei de completar minha equipe competitiva! 🏆
+Quem quiser batalhar pode me chamar.
+</p>
+
+<div class="actions">
+<span>❤️ 17</span>
+<span>💬 5</span>
+<span>🔗 Compartilhar</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NOTÍCIAS -->
+
+<section class="container" id="noticias">
+
+<h2 class="section-title">
+📰 <span>Notícias</span>
+</h2>
+
+<div class="cards">
+
+<div class="news-card">
+
+<div class="news-image">
+⚡
+</div>
+
+<div class="news-content">
+
+<h3>
+Novos Pokémon em destaque
+</h3>
+
+<p>
+Confira as novidades, eventos e descobertas da comunidade.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-image">
+🏆
+</div>
+
+<div class="news-content">
+
+<h3>
+Torneio da Comunidade
+</h3>
+
+<p>
+Prepare seu melhor time e participe dos próximos torneios.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-image">
+🎮
+</div>
+
+<div class="news-content">
+
+<h3>
+Eventos especiais
+</h3>
+
+<p>
+Fique por dentro dos próximos eventos e desafios.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>
+© 2026 PokéCommunity
+</p>
+
+<p style="margin-top:8px;">
+Uma comunidade criada por fãs de Pokémon.
+</p>
+
+</footer>
+
+
+<script>
+
+/* POKÉAPI */
+
+const pokemonList = document.getElementById("pokemonList");
+
+const featured = document.getElementById("featured");
+
+
+async function loadPokemon() {
+
+pokemonList.innerHTML = "";
+
+for(let i = 1; i <= 12; i++) {
+
+try {
+
+const response = await fetch(
+`https://pokeapi.co/api/v2/pokemon/${i}`
+);
+
+const pokemon = await response.json();
+
+createPokemonCard(pokemon, pokemonList);
+
+} catch(error) {
+
+console.log(error);
+
+}
+
+}
+
+}
+
+
+function createPokemonCard(pokemon, container) {
+
+const div = document.createElement("div");
+
+div.className = "pokemon";
+
+div.innerHTML = `
+
+<img
+src="${pokemon.sprites.other["official-artwork"].front_default}"
+alt="${pokemon.name}"
+>
+
+<div class="pokemon-id">
+#${String(pokemon.id).padStart(3,"0")}
+</div>
+
+<h3>
+${pokemon.name}
+</h3>
+
+<p style="color:#9da7b3;margin-top:5px;">
+${pokemon.types.map(t => t.type.name).join(" / ")}
+</p>
+
+`;
+
+container.appendChild(div);
+
+}
+
+
+/* BUSCA */
+
+async function searchPokemon() {
+
+const search =
+document.getElementById("pokemonSearch").value
+.toLowerCase()
+.trim();
+
+if(!search) {
+
+loadPokemon();
+return;
+
+}
+
+pokemonList.innerHTML =
+"<p>Procurando...</p>";
+
+try {
+
+const response = await fetch(
+`https://pokeapi.co/api/v2/pokemon/${search}`
+);
+
+if(!response.ok) {
+
+throw new Error();
+
+}
+
+const pokemon = await response.json();
+
+pokemonList.innerHTML = "";
+
+createPokemonCard(pokemon, pokemonList);
+
+} catch {
+
+pokemonList.innerHTML = `
+<p style="color:#ff6b6b;">
+Pokémon não encontrado 😢
+</p>
+`;
+
+}
+
+}
+
+
+/* ENTER NA BUSCA */
+
+document
+.getElementById("pokemonSearch")
+.addEventListener("keydown", function(event) {
+
+if(event.key === "Enter") {
+
+searchPokemon();
+
+}
+
+});
+
+
+/* DESTAQUES */
+
+async function loadFeatured() {
+
+const ids = [25, 6, 150, 149];
+
+for(const id of ids) {
+
+const response =
+await fetch(
+`https://pokeapi.co/api/v2/pokemon/${id}`
+);
+
+const pokemon =
+await response.json();
+
+createPokemonCard(
+pokemon,
+featured
+);
+
+}
+
+}
+
+
+/* INICIAR */
+
+loadPokemon();
+
+loadFeatured();
+
+</script>
+
+</body>
+</html>
