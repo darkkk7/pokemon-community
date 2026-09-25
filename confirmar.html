@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Confirmando conta - PokéCommunity</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d1117;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.box {
+    width: 90%;
+    max-width: 450px;
+    background: #161d27;
+    border: 1px solid #303b4c;
+    border-radius: 18px;
+    padding: 30px;
+}
+
+h1 {
+    color: #e63946;
+}
+
+p {
+    color: #c9d1d9;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1 id="titulo">Confirmando...</h1>
+
+<p id="mensagem">
+Estamos confirmando seu e-mail.
+</p>
+
+<a id="link" href="index.html" style="display:none;">
+Entrar no PokéCommunity
+</a>
+
+</div>
+
+<script type="module">
+
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const supabase = createClient(
+    "https://obyxjtbdwgafrmfoefof.supabase.co",
+    "sb_publishable_shEbDUHdpbrOISJeEG1F1Q_67lDSoNR"
+);
+
+const params = new URLSearchParams(window.location.search);
+
+const tokenHash = params.get("token_hash");
+const type = params.get("type");
+
+const titulo = document.getElementById("titulo");
+const mensagem = document.getElementById("mensagem");
+const link = document.getElementById("link");
+
+if (tokenHash && type) {
+
+    const { error } = await supabase.auth.verifyOtp({
+        token_hash: tokenHash,
+        type: type
+    });
+
+    if (error) {
+
+        titulo.textContent = "Erro ❌";
+
+        mensagem.textContent =
+            "Não foi possível confirmar seu e-mail. O link pode ter expirado ou já ter sido usado.";
+
+    } else {
+
+        titulo.textContent = "E-mail confirmado! ✅";
+
+        mensagem.textContent =
+            "Sua conta foi confirmada com sucesso.";
+
+        link.style.display = "inline-block";
+    }
+
+} else {
+
+    titulo.textContent = "Link inválido ❌";
+
+    mensagem.textContent =
+        "Não encontramos os dados necessários para confirmar sua conta.";
+
+}
+
+</script>
+
+</body>
+</html>
