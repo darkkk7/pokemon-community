@@ -1,141 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Login - PokéCommunity</title>
+    <meta charset="UTF-8">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    background: #0d1117;
-    color: white;
-    padding: 20px;
-}
+    <title>Login - PokéCommunity</title>
 
-.box {
-    width: 100%;
-    max-width: 420px;
-    background: #161d27;
-    border: 1px solid #303b4c;
-    border-radius: 18px;
-    padding: 30px;
-}
+    <style>
 
-.logo {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 25px;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.logo span {
-    color: #e63946;
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: white;
+            padding: 20px;
+        }
 
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-}
+        .box {
+            width: 100%;
+            max-width: 420px;
+            background: #161d27;
+            border: 1px solid #303b4c;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
 
-input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: 1px solid #303b4c;
-    background: #0d1117;
-    color: white;
-    font-size: 16px;
-}
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
 
-button {
-    width: 100%;
-    padding: 14px;
-    border: 0;
-    border-radius: 10px;
-    background: #e63946;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .logo span {
+            color: #e63946;
+        }
 
-button:hover {
-    background: #ff4d5a;
-}
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
 
-.link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #e63946;
-    text-decoration: none;
-}
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #303b4c;
+            background: #0d1117;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
 
-#message {
-    text-align: center;
-    margin-top: 15px;
-    color: #ffb4b4;
-}
-</style>
+        input:focus {
+            border-color: #e63946;
+        }
+
+        input::placeholder {
+            color: #8b949e;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: #e63946;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff4d5a;
+        }
+
+        .link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #e63946;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+            color: #ffb4b4;
+            font-size: 14px;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<div class="box">
+    <div class="box">
 
-<div class="logo">
-⚡ Poké<span>Community</span>
-</div>
+        <div class="logo">
+            ⚡ Poké<span>Community</span>
+        </div>
 
-<h1>Entrar</h1>
+        <h1>
+            Entrar
+        </h1>
 
-<form id="loginForm">
+        <form id="loginForm">
 
-<input
-type="email"
-id="email"
-placeholder="Seu e-mail"
-required
->
+            <input
+                type="email"
+                id="email"
+                placeholder="Seu e-mail"
+                autocomplete="email"
+                required
+            >
 
-<input
-type="password"
-id="password"
-placeholder="Sua senha"
-required
->
+            <input
+                type="password"
+                id="password"
+                placeholder="Sua senha"
+                autocomplete="current-password"
+                required
+            >
 
-<button type="submit">
-Entrar
-</button>
+            <button type="submit">
+                Entrar
+            </button>
 
-</form>
+        </form>
 
-<p id="message"></p>
+        <p id="message"></p>
 
-<a class="link" href="cadastro.html">
-Ainda não tenho uma conta
-</a>
+        <a class="link" href="cadastro.html">
+            Ainda não tenho uma conta
+        </a>
 
-<a class="link" href="index.html">
-Voltar para o site
-</a>
+        <a class="link" href="index.html">
+            Voltar para o site
+        </a>
 
-</div>
+    </div>
 
-<script type="module" src="auth.js"></script>
+    <script type="module" src="auth.js"></script>
 
 </body>
+
 </html>
+
+
