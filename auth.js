@@ -21,15 +21,37 @@ if (registerForm) {
 
         event.preventDefault();
 
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
+        const username =
+            document.getElementById("username").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
         const confirmPassword =
             document.getElementById("confirmPassword").value;
 
-        const message = document.getElementById("message");
+        const message =
+            document.getElementById("message");
+
 
         message.style.color = "#ffffff";
 
+
+        // Verificar nome de usuário
+
+        if (username.length < 3) {
+
+            message.textContent =
+                "O nome de usuário precisa ter pelo menos 3 caracteres.";
+
+            return;
+        }
+
+
+        // Verificar senha
 
         if (password !== confirmPassword) {
 
@@ -53,16 +75,31 @@ if (registerForm) {
             "Criando sua conta...";
 
 
+        // Criar usuário
+
         const { error } =
             await supabase.auth.signUp({
 
                 email: email,
-                password: password
+
+                password: password,
+
+                options: {
+
+                    data: {
+
+                        username: username
+
+                    }
+
+                }
 
             });
 
 
         if (error) {
+
+            message.style.color = "#ff6b6b";
 
             message.textContent =
                 "Erro: " + error.message;
@@ -88,11 +125,13 @@ if (registerForm) {
 const loginForm =
     document.getElementById("loginForm");
 
+
 if (loginForm) {
 
     loginForm.addEventListener("submit", async (event) => {
 
         event.preventDefault();
+
 
         const email =
             document.getElementById("email").value.trim();
@@ -114,12 +153,15 @@ if (loginForm) {
             await supabase.auth.signInWithPassword({
 
                 email: email,
+
                 password: password
 
             });
 
 
         if (error) {
+
+            message.style.color = "#ff6b6b";
 
             message.textContent =
                 "Login inválido: " + error.message;
@@ -136,7 +178,8 @@ if (loginForm) {
 
         setTimeout(() => {
 
-            window.location.href = "index.html";
+            window.location.href =
+                "index.html";
 
         }, 800);
 
