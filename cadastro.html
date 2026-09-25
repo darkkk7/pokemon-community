@@ -1,150 +1,282 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cadastro - PokéCommunity</title>
+    <meta charset="UTF-8">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    background: #0d1117;
-    color: white;
-    padding: 20px;
-}
+    <title>Criar conta - PokéCommunity</title>
 
-.box {
-    width: 100%;
-    max-width: 420px;
-    background: #161d27;
-    border: 1px solid #303b4c;
-    border-radius: 18px;
-    padding: 30px;
-}
+    <style>
 
-.logo {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 25px;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.logo span {
-    color: #e63946;
-}
+        body {
 
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-}
+            margin: 0;
 
-input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: 1px solid #303b4c;
-    background: #0d1117;
-    color: white;
-    font-size: 16px;
-}
+            min-height: 100vh;
 
-button {
-    width: 100%;
-    padding: 14px;
-    border: 0;
-    border-radius: 10px;
-    background: #e63946;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
+            display: flex;
 
-button:hover {
-    background: #ff4d5a;
-}
+            align-items: center;
 
-.link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #e63946;
-    text-decoration: none;
-}
+            justify-content: center;
 
-#message {
-    text-align: center;
-    margin-top: 15px;
-    color: #ffb4b4;
-}
-</style>
+            font-family: Arial, sans-serif;
+
+            background: #0d1117;
+
+            color: white;
+
+            padding: 20px;
+        }
+
+        .box {
+
+            width: 100%;
+
+            max-width: 420px;
+
+            background: #161d27;
+
+            border: 1px solid #303b4c;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo {
+
+            text-align: center;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+        .logo span {
+            color: #e63946;
+        }
+
+        h1 {
+
+            text-align: center;
+
+            margin-top: 0;
+
+            margin-bottom: 25px;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            border: 1px solid #303b4c;
+
+            background: #0d1117;
+
+            color: white;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        input:focus {
+
+            border-color: #e63946;
+        }
+
+        input::placeholder {
+            color: #8b949e;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: #e63946;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+
+            background: #ff4d5a;
+
+            transform: translateY(-1px);
+        }
+
+        button:active {
+
+            transform: translateY(0);
+        }
+
+        .link {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #e63946;
+
+            text-decoration: none;
+
+            font-size: 15px;
+        }
+
+        .link:hover {
+
+            text-decoration: underline;
+        }
+
+        #message {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            min-height: 20px;
+
+            color: #ffb4b4;
+
+            font-size: 14px;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<div class="box">
 
-<div class="logo">
-⚡ Poké<span>Community</span>
-</div>
+    <div class="box">
 
-<h1>Criar conta</h1>
 
-<form id="registerForm">
+        <div class="logo">
 
-<input
-type="email"
-id="email"
-placeholder="Seu e-mail"
-required
->
+            ⚡ Poké<span>Community</span>
 
-<input
-type="password"
-id="password"
-placeholder="Crie uma senha"
-minlength="6"
-required
->
+        </div>
 
-<input
-type="password"
-id="confirmPassword"
-placeholder="Confirme sua senha"
-minlength="6"
-required
->
 
-<button type="submit">
-Criar minha conta
-</button>
+        <h1>
 
-</form>
+            Criar conta
 
-<p id="message"></p>
+        </h1>
 
-<a class="link" href="login.html">
-Já tenho uma conta
-</a>
 
-<a class="link" href="index.html">
-Voltar para o site
-</a>
+        <form id="registerForm">
 
-</div>
 
-<script type="module" src="auth.js"></script>
+            <input
+                type="email"
+                id="email"
+                placeholder="Seu e-mail"
+                autocomplete="email"
+                required
+            >
+
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Crie uma senha"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
+
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirme sua senha"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
+
+
+            <button type="submit">
+
+                Criar conta
+
+            </button>
+
+
+        </form>
+
+
+        <p id="message"></p>
+
+
+        <a
+            class="link"
+            href="login.html"
+        >
+
+            Já tenho uma conta
+
+        </a>
+
+
+        <a
+            class="link"
+            href="index.html"
+        >
+
+            Voltar para o site
+
+        </a>
+
+
+    </div>
+
+
+    <script
+        type="module"
+        src="auth.js"
+    ></script>
+
 
 </body>
+
 </html>
