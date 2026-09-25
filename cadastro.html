@@ -1,223 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Criar conta - PokéCommunity</title>
 
 <style>
+*{box-sizing:border-box}
 
-* {
-    box-sizing: border-box;
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+font-family:Arial,sans-serif;
+background:#0d1117;
+color:white
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-
-    font-family: Arial, sans-serif;
-
-    background: #0d1117;
-    color: white;
+.box{
+width:100%;
+max-width:420px;
+background:#161d27;
+border:1px solid #303b4c;
+border-radius:18px;
+padding:30px
 }
 
-.box {
-    width: 100%;
-    max-width: 420px;
-
-    background: #161d27;
-
-    border: 1px solid #303b4c;
-    border-radius: 18px;
-
-    padding: 30px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+.logo{
+text-align:center;
+font-size:28px;
+font-weight:bold;
+margin-bottom:25px
 }
 
-.logo {
-    text-align: center;
+.logo span{color:#e63946}
 
-    font-size: 28px;
-    font-weight: bold;
-
-    margin-bottom: 25px;
+h1{
+text-align:center;
+margin:0 0 25px
 }
 
-.logo span {
-    color: #e63946;
+form{
+display:flex;
+flex-direction:column;
+gap:15px
 }
 
-h1 {
-    text-align: center;
-
-    margin: 0 0 25px 0;
+input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #303b4c;
+background:#0d1117;
+color:white;
+font-size:16px;
+outline:none
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+input:focus{border-color:#e63946}
+
+button{
+width:100%;
+padding:14px;
+border:0;
+border-radius:10px;
+background:#e63946;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer
 }
 
-input {
-    width: 100%;
+button:hover{background:#ff4d5a}
 
-    padding: 14px;
-
-    border-radius: 10px;
-
-    border: 1px solid #303b4c;
-
-    background: #0d1117;
-
-    color: white;
-
-    font-size: 16px;
-
-    outline: none;
+#message{
+text-align:center;
+margin-top:18px;
+min-height:20px;
+font-size:14px
 }
 
-input:focus {
-    border-color: #e63946;
+.link{
+display:block;
+text-align:center;
+margin-top:18px;
+color:#e63946;
+text-decoration:none;
+font-size:15px
 }
-
-input::placeholder {
-    color: #8b949e;
-}
-
-button {
-    width: 100%;
-
-    padding: 14px;
-
-    margin-top: 5px;
-
-    border: none;
-    border-radius: 10px;
-
-    background: #e63946;
-
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-button:hover {
-    background: #ff4d5a;
-}
-
-#message {
-    text-align: center;
-
-    margin: 18px 0 0 0;
-
-    min-height: 20px;
-
-    color: #ffb4b4;
-
-    font-size: 14px;
-}
-
-.link {
-    display: block;
-
-    text-align: center;
-
-    margin-top: 18px;
-
-    color: #e63946;
-
-    text-decoration: none;
-
-    font-size: 15px;
-}
-
-.link:hover {
-    text-decoration: underline;
-}
-
 </style>
-
 </head>
 
 <body>
 
 <div class="box">
 
-    <div class="logo">
-        ⚡ Poké<span>Community</span>
-    </div>
+<div class="logo">⚡ Poké<span>Community</span></div>
 
-    <h1>Criar conta</h1>
+<h1>Criar conta</h1>
 
-    <form id="registerForm">
+<form id="registerForm">
 
-        <input
-            type="text"
-            id="username"
-            placeholder="Nome de usuário"
-            autocomplete="username"
-            minlength="3"
-            maxlength="20"
-            required
-        >
+<input type="text" id="username" placeholder="Nome de usuário" minlength="3" maxlength="20" required>
 
-        <input
-            type="email"
-            id="email"
-            placeholder="Seu e-mail"
-            autocomplete="email"
-            required
-        >
+<input type="email" id="email" placeholder="Seu e-mail" required>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Crie uma senha"
-            autocomplete="new-password"
-            minlength="6"
-            required
-        >
+<input type="password" id="password" placeholder="Crie uma senha" minlength="6" required>
 
-        <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Confirme sua senha"
-            autocomplete="new-password"
-            minlength="6"
-            required
-        >
+<input type="password" id="confirmPassword" placeholder="Confirme sua senha" minlength="6" required>
 
-        <button type="submit">
-            Criar conta
-        </button>
+<button type="submit">Criar conta</button>
 
-    </form>
+</form>
 
-    <p id="message"></p>
+<p id="message"></p>
 
-    <a class="link" href="login.html">
-        Já tenho uma conta
-    </a>
+<a class="link" href="login.html">Já tenho uma conta</a>
 
-    <a class="link" href="index.html">
-        Voltar para o site
-    </a>
+<a class="link" href="index.html">Voltar para o site</a>
 
 </div>
 
 <script type="module" src="auth.js"></script>
 
 </body>
-
 </html>
