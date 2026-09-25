@@ -2,1121 +2,2341 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PokéCommunity</title>
+<meta name="theme-color" content="#080b12">
+
+<meta
+name="description"
+content="PokéCommunity — sua Pokédex online para descobrir informações sobre Pokémon."
+>
+
+<title>PokéCommunity — Pokédex Online</title>
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0d1117;
-    color: white;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070a10;
+    color:#ffffff;
+    overflow-x:hidden;
 }
 
-/* HEADER */
-
-header {
-    background: #151b24;
-    border-bottom: 2px solid #e63946;
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+button,
+input{
+    font:inherit;
 }
 
-.nav {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
 
-.logo span {
-    color: #e63946;
-}
+/* =========================================
+   FUNDO
+========================================= */
 
-nav {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #e63946;
-}
-
-/* LOGIN */
-
-.login-links {
-    display: flex;
-    gap: 10px;
-    margin-left: 10px;
-}
-
-.login-links a {
-    padding: 9px 14px;
-    border-radius: 8px;
-    border: 1px solid #e63946;
-}
-
-.login-links .register {
-    background: #e63946;
-    color: white;
-}
-
-.login-links .register:hover {
-    background: #ff4d5a;
-    color: white;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-3;
 
     background:
-    linear-gradient(
-        rgba(13,17,23,.80),
-        rgba(13,17,23,.95)
-    ),
-    url("https://images.unsplash.com/photo-1606503153255-59d8b8b8212f?auto=format&fit=crop&w=1600&q=80");
-
-    background-size: cover;
-    background-position: center;
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(230,57,70,.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(40,120,255,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(255,190,50,.07),
+            transparent 30%
+        );
 }
 
-.hero-content {
-    max-width: 700px;
+
+/* =========================================
+   PARTÍCULAS
+========================================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
 }
 
-.hero h1 {
-    font-size: 50px;
-    margin-bottom: 15px;
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    box-shadow:0 0 12px rgba(255,255,255,.5);
+
+    animation:floatParticle linear infinite;
 }
 
-.hero h1 span {
-    color: #e63946;
+.particle:nth-child(1){
+    left:8%;
+    top:80%;
+    animation-duration:14s;
 }
 
-.hero p {
-    font-size: 18px;
-    color: #c9d1d9;
-    margin-bottom: 30px;
+.particle:nth-child(2){
+    left:18%;
+    top:60%;
+    animation-duration:19s;
 }
 
-.btn {
-    display: inline-block;
-    background: #e63946;
-    color: white;
-    padding: 14px 25px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: .2s;
+.particle:nth-child(3){
+    left:31%;
+    top:90%;
+    animation-duration:16s;
 }
 
-.btn:hover {
-    background: #ff4d5a;
-    transform: scale(1.03);
+.particle:nth-child(4){
+    left:48%;
+    top:70%;
+    animation-duration:22s;
 }
 
-/* CONTAINER */
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 50px 20px;
+.particle:nth-child(5){
+    left:62%;
+    top:85%;
+    animation-duration:17s;
 }
 
-.section-title {
-    font-size: 30px;
-    margin-bottom: 25px;
+.particle:nth-child(6){
+    left:76%;
+    top:65%;
+    animation-duration:20s;
 }
 
-.section-title span {
-    color: #e63946;
+.particle:nth-child(7){
+    left:88%;
+    top:82%;
+    animation-duration:15s;
 }
 
-/* POKEMON */
-
-.search-area {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+.particle:nth-child(8){
+    left:94%;
+    top:45%;
+    animation-duration:23s;
 }
 
-.search-area input {
-    flex: 1;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #303b4c;
-    background: #161d27;
-    color: white;
-    font-size: 16px;
-    outline: none;
-}
+@keyframes floatParticle{
 
-.search-area input:focus {
-    border-color: #e63946;
-}
-
-.pokedex-status {
-    color: #8b949e;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.pokemon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-}
-
-.pokemon {
-    background: #161d27;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #252f3d;
-    transition: .2s;
-}
-
-.pokemon:hover {
-    transform: translateY(-5px);
-    border-color: #e63946;
-}
-
-.pokemon img {
-    width: 140px;
-    height: 140px;
-    object-fit: contain;
-}
-
-.pokemon h3 {
-    margin-top: 10px;
-    font-size: 19px;
-}
-
-.pokemon-id {
-    color: #8b949e;
-    font-size: 14px;
-}
-
-.pokemon-types {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-}
-
-.type {
-    padding: 6px 9px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* TIPOS */
-
-.type-normal { background: #666; }
-.type-fire { background: #b93838; }
-.type-water { background: #2864a8; }
-.type-electric { background: #b08a00; }
-.type-grass { background: #3d7f45; }
-.type-ice { background: #398d9b; }
-.type-fighting { background: #9b422d; }
-.type-poison { background: #74458c; }
-.type-ground { background: #80652e; }
-.type-flying { background: #596aa3; }
-.type-psychic { background: #a53e78; }
-.type-bug { background: #58752c; }
-.type-rock { background: #71623b; }
-.type-ghost { background: #51456d; }
-.type-dragon { background: #4d42a0; }
-.type-dark { background: #393939; }
-.type-steel { background: #59616b; }
-.type-fairy { background: #9c5d79; }
-
-/* PAGINAÇÃO */
-
-.pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 35px;
-}
-
-.pagination button {
-    background: #e63946;
-    border: none;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.pagination button:disabled {
-    opacity: .4;
-    cursor: not-allowed;
-}
-
-#pageInfo {
-    color: #c9d1d9;
-    font-weight: bold;
-}
-
-/* COMMUNITY */
-
-.community {
-    background: #111821;
-}
-
-.post {
-    background: #161d27;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 15px;
-    border: 1px solid #252f3d;
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-}
-
-.avatar {
-    width: 45px;
-    height: 45px;
-    background: #e63946;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.post p {
-    color: #d0d7de;
-    line-height: 1.5;
-}
-
-.actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 20px;
-    color: #8b949e;
-}
-
-/* NOTÍCIAS */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.news-card {
-    background: #161d27;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #252f3d;
-}
-
-.news-image {
-    height: 150px;
-    background: linear-gradient(135deg, #e63946, #7b1e28);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-}
-
-.news-content {
-    padding: 20px;
-}
-
-.news-content p {
-    color: #9da7b3;
-    margin-top: 10px;
-    line-height: 1.5;
-}
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #080b10;
-    color: #8b949e;
-    margin-top: 30px;
-}
-
-/* MOBILE */
-
-@media(max-width: 700px) {
-
-    .nav {
-        flex-direction: column;
-        gap: 15px;
+    from{
+        transform:translateY(40px);
+        opacity:0;
     }
 
-    nav {
-        justify-content: center;
+    15%{
+        opacity:1;
     }
 
-    nav a {
-        font-size: 14px;
+    85%{
+        opacity:1;
     }
 
-    .login-links {
-        width: 100%;
-        justify-content: center;
-        margin-left: 0;
+    to{
+        transform:translateY(-900px);
+        opacity:0;
+    }
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(7,10,16,.72);
+    border-bottom:1px solid rgba(255,255,255,.07);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    z-index:100;
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:-.5px;
+
+    white-space:nowrap;
+}
+
+.logo-icon{
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #e63946,
+        #ff5964
+    );
+
+    box-shadow:
+        0 0 25px rgba(230,57,70,.35);
+
+    animation:logoPulse 3s ease-in-out infinite;
+}
+
+.logo-name{
+    display:flex;
+    gap:7px;
+}
+
+.logo-poke{
+    color:#ffffff;
+}
+
+.logo-community{
+    color:#e63946;
+
+    animation:communityGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse{
+
+    0%,
+    100%{
+        transform:scale(1);
     }
 
-    .hero h1 {
-        font-size: 38px;
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes communityGlow{
+
+    0%,
+    100%{
+        text-shadow:0 0 0 rgba(230,57,70,0);
     }
 
-    .hero p {
-        font-size: 16px;
+    50%{
+        text-shadow:
+            0 0 15px rgba(230,57,70,.65),
+            0 0 30px rgba(230,57,70,.25);
+    }
+}
+
+
+/* MENU */
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    position:relative;
+
+    color:#aeb7c6;
+
+    font-size:14px;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#ffffff;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:2px;
+
+    background:#e63946;
+
+    transition:.25s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    padding:
+        130px 7%
+        80px;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    left:-280px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:rgba(230,57,70,.12);
+
+    filter:blur(100px);
+
+    pointer-events:none;
+}
+
+.hero-content{
+    max-width:760px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-flex;
+
+    align-items:center;
+    gap:8px;
+
+    padding:9px 14px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:100px;
+
+    background:rgba(255,255,255,.04);
+
+    color:#cbd3df;
+
+    font-size:13px;
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+    animation:fadeUp .8s ease both;
+}
+
+.hero-badge span{
+    color:#ffd166;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,92px);
+
+    line-height:.95;
+
+    letter-spacing:-5px;
+
+    margin-bottom:28px;
+
+    animation:fadeUp .9s .1s ease both;
+}
+
+.hero h1 .red{
+    color:#e63946;
+
+    text-shadow:
+        0 0 30px rgba(230,57,70,.25);
+}
+
+.hero h1 .outline{
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.45);
+}
+
+.hero-description{
+    max-width:650px;
+
+    color:#9ca7b7;
+
+    font-size:18px;
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    animation:fadeUp .9s .2s ease both;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+
+    animation:fadeUp .9s .3s ease both;
+}
+
+.primary-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px 24px;
+
+    border-radius:12px;
+
+    background:#e63946;
+
+    color:#ffffff;
+
+    font-weight:800;
+
+    box-shadow:
+        0 10px 35px rgba(230,57,70,.22);
+
+    transition:.25s;
+}
+
+.primary-button:hover{
+    transform:translateY(-3px);
+
+    background:#ff4d5a;
+
+    box-shadow:
+        0 15px 45px rgba(230,57,70,.35);
+}
+
+.secondary-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px 24px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.04);
+
+    color:#ffffff;
+
+    font-weight:800;
+
+    transition:.25s;
+}
+
+.secondary-button:hover{
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.08);
+}
+
+
+/* HERO POKEBALL */
+
+.hero-ball{
+    position:absolute;
+
+    right:7%;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:min(38vw,480px);
+    height:min(38vw,480px);
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #e63946 0 48%,
+            #11151d 48% 52%,
+            #f1f3f5 52% 100%
+        );
+
+    box-shadow:
+        0 0 80px rgba(230,57,70,.13),
+        inset 0 0 60px rgba(0,0,0,.25);
+
+    animation:
+        ballFloat 5s ease-in-out infinite;
+
+    opacity:.7;
+}
+
+.hero-ball::before{
+    content:"";
+
+    position:absolute;
+
+    width:31%;
+    height:31%;
+
+    left:34.5%;
+    top:34.5%;
+
+    border-radius:50%;
+
+    background:#f1f3f5;
+
+    border:
+        18px solid #11151d;
+
+    box-shadow:
+        0 0 0 8px rgba(255,255,255,.3);
+}
+
+@keyframes ballFloat{
+
+    0%,
+    100%{
+        transform:
+            translateY(-50%)
+            rotate(0deg);
     }
 
-    .search-area {
-        flex-direction: column;
+    50%{
+        transform:
+            translateY(calc(-50% - 18px))
+            rotate(4deg);
+    }
+}
+
+
+/* =========================================
+   SEÇÕES
+========================================= */
+
+.section{
+    padding:110px 7%;
+}
+
+.section-header{
+    display:flex;
+
+    align-items:end;
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:45px;
+}
+
+.section-label{
+    color:#e63946;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:12px;
+    font-weight:900;
+
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-size:clamp(30px,4vw,48px);
+
+    letter-spacing:-2px;
+}
+
+.section-description{
+    max-width:500px;
+
+    color:#8994a5;
+
+    line-height:1.7;
+}
+
+
+/* =========================================
+   FEATURED
+========================================= */
+
+.featured-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:18px;
+}
+
+.pokemon-card{
+    position:relative;
+
+    min-height:330px;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    transition:
+        transform .3s,
+        border-color .3s,
+        box-shadow .3s;
+}
+
+.pokemon-card:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(230,57,70,.4);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.3);
+}
+
+.card-number{
+    position:absolute;
+
+    top:18px;
+    left:20px;
+
+    color:#697384;
+
+    font-size:12px;
+    font-weight:900;
+}
+
+.card-shiny{
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    padding:6px 9px;
+
+    border-radius:100px;
+
+    background:rgba(255,209,102,.1);
+
+    border:1px solid rgba(255,209,102,.2);
+
+    color:#ffd166;
+
+    font-size:11px;
+    font-weight:900;
+}
+
+.card-image{
+    width:180px;
+    height:180px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:
+        35px auto 5px;
+
+    filter:
+        drop-shadow(
+            0 15px 15px rgba(0,0,0,.3)
+        );
+
+    transition:.35s;
+}
+
+.pokemon-card:hover .card-image{
+    transform:scale(1.08) translateY(-5px);
+}
+
+.card-info{
+    padding:
+        10px 22px 22px;
+}
+
+.card-info h3{
+    font-size:22px;
+
+    text-transform:capitalize;
+
+    margin-bottom:7px;
+}
+
+.card-info p{
+    color:#788496;
+
+    font-size:13px;
+}
+
+
+/* =========================================
+   SHINY
+========================================= */
+
+.shiny-section{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,209,102,.035),
+            transparent 50%,
+            rgba(138,91,255,.04)
+        );
+}
+
+.shiny-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:20px;
+}
+
+.shiny-card{
+    position:relative;
+
+    min-height:270px;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.02)
+        );
+}
+
+.shiny-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-60px;
+    bottom:-70px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,209,102,.1);
+
+    filter:blur(30px);
+}
+
+.shiny-info{
+    position:relative;
+
+    z-index:2;
+}
+
+.shiny-info small{
+    color:#ffd166;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+.shiny-info h3{
+    margin-top:8px;
+
+    font-size:26px;
+
+    text-transform:capitalize;
+}
+
+.shiny-info p{
+    color:#818d9f;
+
+    margin-top:8px;
+}
+
+.shiny-image{
+    width:160px;
+    height:160px;
+
+    object-fit:contain;
+
+    position:relative;
+
+    z-index:2;
+
+    filter:
+        drop-shadow(
+            0 15px 20px rgba(0,0,0,.35)
+        );
+
+    animation:
+        shinyFloat 4s ease-in-out infinite;
+}
+
+@keyframes shinyFloat{
+
+    0%,
+    100%{
+        transform:translateY(0);
     }
 
-    .search-area .btn {
-        width: 100%;
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:20px;
+}
+
+.feature{
+    padding:30px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-5px);
+
+    background:
+        rgba(255,255,255,.045);
+
+    border-color:
+        rgba(230,57,70,.25);
+}
+
+.feature-icon{
+    width:50px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:15px;
+
+    background:
+        rgba(230,57,70,.12);
+
+    margin-bottom:20px;
+
+    font-size:23px;
+}
+
+.feature h3{
+    font-size:20px;
+
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#7f8b9c;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta{
+    margin:
+        20px 7% 110px;
+
+    padding:
+        65px 50px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    border:
+        1px solid rgba(230,57,70,.2);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(230,57,70,.14),
+            rgba(255,255,255,.025) 55%
+        );
+}
+
+.cta h2{
+    font-size:clamp(30px,4vw,50px);
+
+    margin-bottom:15px;
+}
+
+.cta p{
+    max-width:600px;
+
+    margin:
+        0 auto 28px;
+
+    color:#8d98a8;
+
+    line-height:1.7;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+    padding:40px 7%;
+
+    border-top:
+        1px solid rgba(255,255,255,.07);
+
+    color:#697586;
+
+    text-align:center;
+
+    font-size:13px;
+}
+
+footer strong{
+    color:#e63946;
+}
+
+
+/* =========================================
+   MODAL DE BOAS-VINDAS
+========================================= */
+
+.welcome-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(3,5,9,.78);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .35s,
+        visibility .35s;
+}
+
+.welcome-overlay.active{
+    opacity:1;
+
+    visibility:visible;
+}
+
+.welcome-box{
+    position:relative;
+
+    width:100%;
+    max-width:540px;
+
+    padding:45px 40px;
+
+    text-align:center;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #131923,
+            #0c1017
+        );
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.6);
+
+    transform:
+        translateY(25px)
+        scale(.96);
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.welcome-overlay.active .welcome-box{
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.welcome-close{
+    position:absolute;
+
+    top:16px;
+    right:16px;
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    color:#8994a5;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.welcome-close:hover{
+    background:rgba(230,57,70,.15);
+
+    color:#ffffff;
+
+    transform:rotate(90deg);
+}
+
+.welcome-icon{
+    width:70px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:
+        0 auto 22px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e63946,
+            #a91f2c
+        );
+
+    box-shadow:
+        0 15px 40px rgba(230,57,70,.25);
+
+    font-size:32px;
+}
+
+.welcome-box h2{
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.welcome-box h2 span{
+    color:#e63946;
+}
+
+.welcome-box p{
+    color:#929dad;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.welcome-button{
+    margin-top:25px;
+
+    border:0;
+
+    padding:13px 25px;
+
+    border-radius:11px;
+
+    background:#e63946;
+
+    color:#ffffff;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.welcome-button:hover{
+    background:#ff4d5a;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
     }
 
-    .pagination {
-        gap: 10px;
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media(max-width:1000px){
+
+    .hero-ball{
+        opacity:.18;
+
+        width:500px;
+        height:500px;
+
+        right:-180px;
+    }
+
+    .featured-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .shiny-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .features{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    nav{
+        gap:15px;
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    header{
+        height:68px;
+
+        padding:
+            0 20px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-icon{
+        width:34px;
+        height:34px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding:
+            120px 25px 70px;
+
+        min-height:100vh;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .hero-description{
+        font-size:16px;
+    }
+
+    .hero-ball{
+        width:380px;
+        height:380px;
+
+        right:-180px;
+
+        opacity:.12;
+    }
+
+    .section{
+        padding:
+            75px 25px;
+    }
+
+    .section-header{
+        display:block;
+    }
+
+    .section-description{
+        margin-top:15px;
+    }
+
+    .featured-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:12px;
+    }
+
+    .pokemon-card{
+        min-height:255px;
+
+        border-radius:18px;
+    }
+
+    .card-image{
+        width:130px;
+        height:130px;
+
+        margin-top:35px;
+    }
+
+    .card-info{
+        padding:
+            5px 15px 18px;
+    }
+
+    .card-info h3{
+        font-size:18px;
+    }
+
+    .shiny-grid{
+        grid-template-columns:1fr;
+    }
+
+    .shiny-card{
+        min-height:230px;
+    }
+
+    .shiny-image{
+        width:125px;
+        height:125px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        margin:
+            0 25px 75px;
+
+        padding:
+            45px 25px;
+    }
+
+    .welcome-box{
+        padding:
+            40px 25px;
+    }
+
+}
+
+
+@media(max-width:390px){
+
+    .featured-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .logo-community{
+        display:none;
+    }
+
+}
+
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ======================================
+     PARTÍCULAS
+======================================= -->
+
+<div class="particles">
+
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+</div>
+
+
+<!-- ======================================
+     HEADER
+======================================= -->
+
 <header>
 
-<div class="nav">
+    <a href="index.html" class="logo">
 
-<div class="logo">
-⚡ Poké<span>Community</span>
-</div>
+        <div class="logo-icon">
+            ⚡
+        </div>
 
-<nav>
+        <div class="logo-name">
 
-<a href="#inicio">Início</a>
+            <span class="logo-poke">
+                Poké
+            </span>
 
-<a href="#pokedex">Pokédex</a>
+            <span class="logo-community">
+                Community
+            </span>
 
-<a href="#comunidade">Comunidade</a>
+        </div>
 
-<a href="#noticias">Notícias</a>
+    </a>
 
-<div class="login-links">
 
-<a href="login.html" class="login">
-Entrar
-</a>
+    <nav>
 
-<a href="cadastro.html" class="register">
-Criar conta
-</a>
+        <a href="#inicio">
+            Início
+        </a>
 
-</div>
+        <a href="#pokedex">
+            Pokédex
+        </a>
 
-</nav>
+        <a href="#shiny">
+            ✨ Shiny
+        </a>
 
-</div>
+        <a href="#sobre">
+            Sobre
+        </a>
+
+    </nav>
 
 </header>
 
 
-<!-- HERO -->
+<!-- ======================================
+     HERO
+======================================= -->
+
+<main>
 
 <section class="hero" id="inicio">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<h1>
-Bem-vindo à
-<span>PokéCommunity</span>
-</h1>
+        <div class="hero-badge">
 
-<p>
-A comunidade para quem realmente gosta de Pokémon.
-Explore, converse, monte seu time e compartilhe suas aventuras.
-</p>
+            <span>●</span>
 
-<a href="#pokedex" class="btn">
-Explorar Pokédex
-</a>
+            Pokédex online
 
-</div>
+        </div>
+
+
+        <h1>
+
+            Descubra o mundo
+            <br>
+
+            <span class="red">
+                Pokémon
+            </span>
+
+            <br>
+
+            <span class="outline">
+                sem limites.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Bem-vindo à PokéCommunity, uma Pokédex online
+            criada para você descobrir Pokémon, consultar
+            informações, conhecer seus tipos, evoluções e
+            explorar suas versões Shiny.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#pokedex"
+                class="primary-button"
+            >
+                🔎 Explorar Pokédex
+            </a>
+
+
+            <a
+                href="#shiny"
+                class="secondary-button"
+            >
+                ✨ Ver Shiny
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-ball"></div>
 
 </section>
 
 
-<!-- DESTAQUES -->
+<!-- ======================================
+     POKÉMON EM DESTAQUE
+======================================= -->
 
-<section class="container">
-
-<h2 class="section-title">
-🔥 Pokémon <span>em destaque</span>
-</h2>
-
-<div class="pokemon-grid" id="featured"></div>
-
-</section>
-
-
-<!-- POKEDEX -->
-
-<section class="container" id="pokedex">
-
-<h2 class="section-title">
-📖 <span>Pokédex</span>
-</h2>
-
-<div class="search-area">
-
-<input
-type="text"
-id="pokemonSearch"
-placeholder="Digite o nome ou número do Pokémon..."
+<section
+    class="section"
+    id="pokedex"
 >
 
-<button class="btn" id="searchButton">
-Buscar
-</button>
+    <div class="section-header">
 
-</div>
+        <div>
 
-<div class="pokedex-status" id="pokedexStatus">
-Carregando Pokédex...
-</div>
+            <div class="section-label">
+                Explore
+            </div>
 
-<div class="pokemon-grid" id="pokemonList"></div>
+            <h2 class="section-title">
+                Pokémon em destaque
+            </h2>
 
-<div class="pagination">
+        </div>
 
-<button id="prevPage" disabled>
-← Anterior
-</button>
+        <p class="section-description">
 
-<span id="pageInfo">
-Página 1
-</span>
+            Alguns dos Pokémon mais conhecidos
+            para começar sua jornada pela PokéCommunity.
 
-<button id="nextPage">
-Próxima →
-</button>
+        </p>
 
-</div>
-
-</section>
+    </div>
 
 
-<!-- COMUNIDADE -->
+    <div
+        class="featured-grid"
+        id="featuredGrid"
+    >
 
-<section class="community" id="comunidade">
+        <!-- carregado pelo JavaScript -->
 
-<div class="container">
-
-<h2 class="section-title">
-👥 Nossa <span>Comunidade</span>
-</h2>
-
-<div class="post">
-
-<div class="user">
-
-<div class="avatar">
-A
-</div>
-
-<div>
-
-<strong>AshTrainer</strong>
-
-<br>
-
-<small style="color:#8b949e">
-há 10 minutos
-</small>
-
-</div>
-
-</div>
-
-<p>
-Qual Pokémon vocês escolheriam para começar uma nova aventura?
-Eu iria de Charizard! 🔥
-</p>
-
-<div class="actions">
-<span>❤️ 24</span>
-<span>💬 8</span>
-<span>🔗 Compartilhar</span>
-</div>
-
-</div>
-
-
-<div class="post">
-
-<div class="user">
-
-<div class="avatar">
-M
-</div>
-
-<div>
-
-<strong>MistyBlue</strong>
-
-<br>
-
-<small style="color:#8b949e">
-há 35 minutos
-</small>
-
-</div>
-
-</div>
-
-<p>
-Acabei de completar minha equipe competitiva! 🏆
-Quem quiser batalhar pode me chamar.
-</p>
-
-<div class="actions">
-<span>❤️ 17</span>
-<span>💬 5</span>
-<span>🔗 Compartilhar</span>
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- NOTÍCIAS -->
+<!-- ======================================
+     SHINY
+======================================= -->
 
-<section class="container" id="noticias">
+<section
+    class="section shiny-section"
+    id="shiny"
+>
 
-<h2 class="section-title">
-📰 <span>Notícias</span>
-</h2>
+    <div class="section-header">
 
-<div class="cards">
+        <div>
 
-<div class="news-card">
+            <div class="section-label">
+                ✨ Raros
+            </div>
 
-<div class="news-image">
-⚡
-</div>
+            <h2 class="section-title">
+                Versões Shiny
+            </h2>
 
-<div class="news-content">
+        </div>
 
-<h3>
-Novos Pokémon em destaque
-</h3>
+        <p class="section-description">
 
-<p>
-Confira as novidades, eventos e descobertas da comunidade.
-</p>
+            Descubra algumas versões alternativas
+            dos Pokémon e suas colorações especiais.
 
-</div>
+        </p>
 
-</div>
-
-
-<div class="news-card">
-
-<div class="news-image">
-🏆
-</div>
-
-<div class="news-content">
-
-<h3>
-Torneio da Comunidade
-</h3>
-
-<p>
-Prepare seu melhor time e participe dos próximos torneios.
-</p>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="news-card">
+    <div
+        class="shiny-grid"
+        id="shinyGrid"
+    >
 
-<div class="news-image">
-🎮
-</div>
+        <!-- carregado pelo JavaScript -->
 
-<div class="news-content">
-
-<h3>
-Eventos especiais
-</h3>
-
-<p>
-Fique por dentro dos próximos eventos e desafios.
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+
+<!-- ======================================
+     RECURSOS
+======================================= -->
+
+<section
+    class="section"
+    id="sobre"
+>
+
+    <div class="section-header">
+
+        <div>
+
+            <div class="section-label">
+                PokéCommunity
+            </div>
+
+            <h2 class="section-title">
+                Tudo para conhecer Pokémon.
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Pesquise
+            </h3>
+
+            <p>
+
+                Encontre Pokémon rapidamente pelo
+                nome ou número e descubra suas
+                principais informações.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⚔️
+            </div>
+
+            <h3>
+                Conheça os tipos
+            </h3>
+
+            <p>
+
+                Consulte os tipos dos Pokémon e
+                descubra mais sobre suas características
+                e combinações.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✨
+            </div>
+
+            <h3>
+                Descubra os Shiny
+            </h3>
+
+            <p>
+
+                Veja as versões Shiny e compare
+                suas aparências com as versões normais.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🧬
+            </div>
+
+            <h3>
+                Evoluções
+            </h3>
+
+            <p>
+
+                Descubra as linhas evolutivas e
+                acompanhe a jornada de cada Pokémon.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Informações
+            </h3>
+
+            <p>
+
+                Consulte estatísticas, habilidades,
+                tipos e outras informações úteis.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🌎
+            </div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+
+                Um espaço feito para quem gosta
+                de descobrir e aprender mais sobre
+                o universo Pokémon.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+     CTA
+======================================= -->
+
+<section class="cta">
+
+    <h2>
+        Sua jornada começa aqui.
+    </h2>
+
+    <p>
+
+        Explore a Pokédex e descubra novos
+        Pokémon, formas Shiny, tipos,
+        evoluções e muito mais.
+
+    </p>
+
+    <a
+        href="#pokedex"
+        class="primary-button"
+    >
+        Começar a explorar
+    </a>
+
+</section>
+
+</main>
+
+
+<!-- ======================================
+     FOOTER
+======================================= -->
 
 <footer>
 
-<p>
-© 2026 PokéCommunity
-</p>
+    <p>
 
-<p style="margin-top:8px;">
-Uma comunidade criada por fãs de Pokémon.
-</p>
+        ⚡ <strong>PokéCommunity</strong>
+
+        — Uma Pokédex online feita para
+        fãs de Pokémon.
+
+    </p>
 
 </footer>
 
 
+<!-- ======================================
+     MODAL DE BOAS-VINDAS
+======================================= -->
+
+<div
+    class="welcome-overlay"
+    id="welcomeOverlay"
+>
+
+    <div class="welcome-box">
+
+        <button
+            class="welcome-close"
+            id="welcomeClose"
+            aria-label="Fechar"
+        >
+            ×
+        </button>
+
+
+        <div class="welcome-icon">
+            ⚡
+        </div>
+
+
+        <h2>
+
+            Bem-vindo à
+            <span>PokéCommunity!</span>
+
+        </h2>
+
+
+        <p>
+
+            Uma Pokédex online criada para
+            você tirar dúvidas, conhecer
+            Pokémon, descobrir seus tipos,
+            evoluções, informações e muito mais.
+
+            <br><br>
+
+            Explore, descubra e aproveite
+            sua jornada pelo mundo Pokémon.
+
+        </p>
+
+
+        <button
+            class="welcome-button"
+            id="welcomeButton"
+        >
+            Explorar Pokédex
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================
+     JAVASCRIPT
+======================================= -->
+
 <script>
 
-const pokemonList = document.getElementById("pokemonList");
-const featured = document.getElementById("featured");
-const searchInput = document.getElementById("pokemonSearch");
-const searchButton = document.getElementById("searchButton");
+const API =
+    "https://pokeapi.co/api/v2/pokemon/";
 
-const prevPage = document.getElementById("prevPage");
-const nextPage = document.getElementById("nextPage");
-const pageInfo = document.getElementById("pageInfo");
-const status = document.getElementById("pokedexStatus");
 
-const tipos = {
+const featuredIds = [
+    25,
+    6,
+    150,
+    149
+];
 
-    normal: ["⚪", "Normal"],
-    fire: ["🔥", "Fogo"],
-    water: ["💧", "Água"],
-    electric: ["⚡", "Elétrico"],
-    grass: ["🌿", "Planta"],
-    ice: ["❄️", "Gelo"],
-    fighting: ["🥊", "Lutador"],
-    poison: ["☠️", "Veneno"],
-    ground: ["🌍", "Terrestre"],
-    flying: ["🪽", "Voador"],
-    psychic: ["🔮", "Psíquico"],
-    bug: ["🐛", "Inseto"],
-    rock: ["🪨", "Pedra"],
-    ghost: ["👻", "Fantasma"],
-    dragon: ["🐉", "Dragão"],
-    dark: ["🌑", "Sombrio"],
-    steel: ["⚙️", "Aço"],
-    fairy: ["🧚", "Fada"]
 
-};
+const shinyIds = [
+    133,
+    197,
+    448
+];
 
-const nomes = {
 
-    bulbasaur: "Bulbassauro",
-    ivysaur: "Ivissauro",
-    venusaur: "Venussauro",
-    charmander: "Charmander",
-    charmeleon: "Charmeleon",
-    charizard: "Charizard",
-    squirtle: "Squirtle",
-    wartortle: "Wartortle",
-    blastoise: "Blastoise",
-    pikachu: "Pikachu",
-    raichu: "Raichu",
-    mewtwo: "Mewtwo",
-    mew: "Mew",
-    dragonite: "Dragonite",
-    lapras: "Lapras",
-    gengar: "Gengar"
+const featuredGrid =
+    document.getElementById(
+        "featuredGrid"
+    );
 
-};
 
-function nomePokemon(nome) {
+const shinyGrid =
+    document.getElementById(
+        "shinyGrid"
+    );
 
-    if (nomes[nome]) {
-        return nomes[nome];
-    }
 
-    return nome.charAt(0).toUpperCase() + nome.slice(1);
+function capitalize(name){
+
+    return name
+        .charAt(0)
+        .toUpperCase()
+        + name.slice(1);
 
 }
 
-function criarCard(pokemon, container) {
 
-    const div = document.createElement("div");
+/* =========================================
+   CARREGAR POKÉMON
+========================================= */
 
-    div.className = "pokemon";
+async function getPokemon(id){
 
-    const imagem =
-        pokemon.sprites.other["official-artwork"].front_default ||
-        pokemon.sprites.front_default;
+    const response =
+        await fetch(API + id);
 
-    let tiposHTML = "";
+    if(!response.ok){
 
-    pokemon.types.forEach(tipo => {
+        throw new Error(
+            "Não foi possível carregar o Pokémon."
+        );
 
-        const dados = tipos[tipo.type.name];
+    }
 
-        if (dados) {
+    return response.json();
 
-            tiposHTML += `
-                <span class="type type-${tipo.type.name}">
-                    ${dados[0]} ${dados[1]}
-                </span>
-            `;
+}
 
-        }
 
-    });
+/* =========================================
+   CARD NORMAL
+========================================= */
 
-    div.innerHTML = `
+function createFeaturedCard(pokemon){
+
+    const artwork =
+        pokemon.sprites.other[
+            "official-artwork"
+        ].front_default;
+
+
+    const card =
+        document.createElement("article");
+
+    card.className =
+        "pokemon-card";
+
+
+    card.innerHTML = `
+
+        <span class="card-number">
+            #${String(pokemon.id).padStart(3,"0")}
+        </span>
+
+        <span class="card-shiny">
+            ✨ Shiny disponível
+        </span>
 
         <img
-            src="${imagem}"
-            alt="${nomePokemon(pokemon.name)}"
+            class="card-image"
+            src="${artwork}"
+            alt="${capitalize(pokemon.name)}"
+            loading="lazy"
         >
 
-        <div class="pokemon-id">
-            #${String(pokemon.id).padStart(4, "0")}
-        </div>
+        <div class="card-info">
 
-        <h3>
-            ${nomePokemon(pokemon.name)}
-        </h3>
+            <h3>
+                ${capitalize(pokemon.name)}
+            </h3>
 
-        <div class="pokemon-types">
-            ${tiposHTML}
+            <p>
+                ${pokemon.types
+                    .map(
+                        type =>
+                        capitalize(
+                            type.type.name
+                        )
+                    )
+                    .join(" • ")
+                }
+            </p>
+
         </div>
 
     `;
 
-    container.appendChild(div);
+
+    return card;
 
 }
 
 
-/* POKÉDEX */
+/* =========================================
+   CARD SHINY
+========================================= */
 
-let pagina = 1;
+function createShinyCard(pokemon){
 
-const porPagina = 20;
+    const shiny =
+        pokemon.sprites.other[
+            "official-artwork"
+        ].front_shiny;
 
-let todosPokemon = [];
+
+    const card =
+        document.createElement("article");
+
+    card.className =
+        "shiny-card";
 
 
-async function carregarLista() {
+    card.innerHTML = `
 
-    status.textContent = "Carregando Pokédex...";
+        <div class="shiny-info">
 
-    pokemonList.innerHTML = "";
+            <small>
+                ✨ SHINY
+            </small>
 
-    try {
+            <h3>
+                ${capitalize(pokemon.name)}
+            </h3>
 
-        const resposta = await fetch(
-            "https://pokeapi.co/api/v2/pokemon?limit=151"
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro na API");
-        }
-
-        const dados = await resposta.json();
-
-        todosPokemon = dados.results;
-
-        await mostrarPagina();
-
-    } catch (erro) {
-
-        console.error(erro);
-
-        status.textContent =
-            "Erro ao carregar a Pokédex.";
-
-        pokemonList.innerHTML = `
-            <p style="color:#ff6b6b;">
-                Não foi possível carregar os Pokémon.
+            <p>
+                #${String(pokemon.id).padStart(3,"0")}
             </p>
-        `;
 
-    }
+        </div>
 
-}
+        <img
+            class="shiny-image"
+            src="${shiny}"
+            alt="${capitalize(pokemon.name)} Shiny"
+            loading="lazy"
+        >
+
+    `;
 
 
-async function mostrarPagina() {
-
-    pokemonList.innerHTML = "";
-
-    const inicio = (pagina - 1) * porPagina;
-
-    const fim = inicio + porPagina;
-
-    const lista = todosPokemon.slice(inicio, fim);
-
-    status.textContent =
-        `Mostrando Pokémon ${inicio + 1} até ${Math.min(fim, todosPokemon.length)}`;
-
-    for (const item of lista) {
-
-        try {
-
-            const resposta = await fetch(item.url);
-
-            const pokemon = await resposta.json();
-
-            criarCard(pokemon, pokemonList);
-
-        } catch (erro) {
-
-            console.error(erro);
-
-        }
-
-    }
-
-    const totalPaginas =
-        Math.ceil(todosPokemon.length / porPagina);
-
-    pageInfo.textContent =
-        `Página ${pagina} de ${totalPaginas}`;
-
-    prevPage.disabled =
-        pagina === 1;
-
-    nextPage.disabled =
-        pagina === totalPaginas;
+    return card;
 
 }
 
 
-/* PAGINAÇÃO */
+/* =========================================
+   CARREGAR DESTAQUES
+========================================= */
 
-prevPage.addEventListener("click", function() {
+async function loadFeatured(){
 
-    if (pagina > 1) {
+    featuredGrid.innerHTML = "";
 
-        pagina--;
+    try{
 
-        mostrarPagina();
-
-        document
-            .getElementById("pokedex")
-            .scrollIntoView();
-
-    }
-
-});
-
-
-nextPage.addEventListener("click", function() {
-
-    const totalPaginas =
-        Math.ceil(todosPokemon.length / porPagina);
-
-    if (pagina < totalPaginas) {
-
-        pagina++;
-
-        mostrarPagina();
-
-        document
-            .getElementById("pokedex")
-            .scrollIntoView();
-
-    }
-
-});
-
-
-/* BUSCA */
-
-async function buscarPokemon() {
-
-    const busca =
-        searchInput.value
-        .trim()
-        .toLowerCase();
-
-    if (!busca) {
-
-        pagina = 1;
-
-        mostrarPagina();
-
-        return;
-
-    }
-
-    status.textContent =
-        "Procurando Pokémon...";
-
-    pokemonList.innerHTML = "";
-
-    try {
-
-        const resposta = await fetch(
-            `https://pokeapi.co/api/v2/pokemon/${busca}`
-        );
-
-        if (!resposta.ok) {
-            throw new Error();
-        }
-
-        const pokemon =
-            await resposta.json();
-
-        criarCard(
-            pokemon,
-            pokemonList
-        );
-
-        status.textContent =
-            "Resultado da busca";
-
-        prevPage.disabled = true;
-        nextPage.disabled = true;
-
-        pageInfo.textContent =
-            "Busca";
-
-    } catch {
-
-        status.textContent =
-            "Pokémon não encontrado.";
-
-        pokemonList.innerHTML = `
-            <p style="color:#ff6b6b;">
-                Pokémon não encontrado 😢
-            </p>
-        `;
-
-    }
-
-}
-
-
-searchButton.addEventListener(
-    "click",
-    buscarPokemon
-);
-
-
-searchInput.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Enter") {
-            buscarPokemon();
-        }
-
-    }
-);
-
-
-/* DESTAQUES */
-
-async function carregarDestaques() {
-
-    const ids = [25, 6, 150, 149];
-
-    for (const id of ids) {
-
-        try {
-
-            const resposta =
-                await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${id}`
-                );
-
-            const pokemon =
-                await resposta.json();
-
-            criarCard(
-                pokemon,
-                featured
+        const pokemonList =
+            await Promise.all(
+                featuredIds.map(getPokemon)
             );
 
-        } catch (erro) {
 
-            console.error(erro);
+        pokemonList.forEach(
+            pokemon => {
 
-        }
+                featuredGrid.appendChild(
+                    createFeaturedCard(pokemon)
+                );
+
+            }
+        );
+
+    }catch(error){
+
+        featuredGrid.innerHTML = `
+
+            <p style="
+                color:#8994a5;
+                grid-column:1/-1;
+            ">
+
+                Não foi possível carregar
+                os Pokémon agora.
+
+            </p>
+
+        `;
+
+        console.error(error);
 
     }
 
 }
 
 
-/* INICIAR */
+/* =========================================
+   CARREGAR SHINY
+========================================= */
 
-carregarLista();
+async function loadShiny(){
 
-carregarDestaques();
+    shinyGrid.innerHTML = "";
+
+    try{
+
+        const pokemonList =
+            await Promise.all(
+                shinyIds.map(getPokemon)
+            );
+
+
+        pokemonList.forEach(
+            pokemon => {
+
+                shinyGrid.appendChild(
+                    createShinyCard(pokemon)
+                );
+
+            }
+        );
+
+    }catch(error){
+
+        shinyGrid.innerHTML = `
+
+            <p style="
+                color:#8994a5;
+                grid-column:1/-1;
+            ">
+
+                Não foi possível carregar
+                os Shiny agora.
+
+            </p>
+
+        `;
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+const welcomeOverlay =
+    document.getElementById(
+        "welcomeOverlay"
+    );
+
+
+const welcomeClose =
+    document.getElementById(
+        "welcomeClose"
+    );
+
+
+const welcomeButton =
+    document.getElementById(
+        "welcomeButton"
+    );
+
+
+function closeWelcome(){
+
+    welcomeOverlay.classList.remove(
+        "active"
+    );
+
+    localStorage.setItem(
+        "pokecommunity_welcome",
+        "seen"
+    );
+
+}
+
+
+/* FECHAR NO X */
+
+welcomeClose.addEventListener(
+    "click",
+    closeWelcome
+);
+
+
+/* BOTÃO EXPLORAR */
+
+welcomeButton.addEventListener(
+    "click",
+    function(){
+
+        closeWelcome();
+
+        setTimeout(
+            function(){
+
+                document
+                    .getElementById("pokedex")
+                    .scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+            },
+            150
+        );
+
+    }
+);
+
+
+/* CLICAR FORA */
+
+welcomeOverlay.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === welcomeOverlay
+        ){
+
+            closeWelcome();
+
+        }
+
+    }
+);
+
+
+/* ESC */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeWelcome();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+loadFeatured();
+
+loadShiny();
+
+
+const alreadySeen =
+    localStorage.getItem(
+        "pokecommunity_welcome"
+    );
+
+
+if(!alreadySeen){
+
+    setTimeout(
+        function(){
+
+            welcomeOverlay.classList.add(
+                "active"
+            );
+
+        },
+        500
+    );
+
+}
 
 </script>
 
+
 </body>
+
 </html>
