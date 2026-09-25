@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadastro - PokéCommunity</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: white;
+    padding: 20px;
+}
+
+.box {
+    width: 100%;
+    max-width: 420px;
+    background: #161d27;
+    border: 1px solid #303b4c;
+    border-radius: 18px;
+    padding: 30px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.logo span {
+    color: #e63946;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #303b4c;
+    background: #0d1117;
+    color: white;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 10px;
+    background: #e63946;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff4d5a;
+}
+
+.link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #e63946;
+    text-decoration: none;
+}
+
+#message {
+    text-align: center;
+    margin-top: 15px;
+    color: #ffb4b4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="logo">
+⚡ Poké<span>Community</span>
+</div>
+
+<h1>Criar conta</h1>
+
+<form id="registerForm">
+
+<input
+type="email"
+id="email"
+placeholder="Seu e-mail"
+required
+>
+
+<input
+type="password"
+id="password"
+placeholder="Crie uma senha"
+minlength="6"
+required
+>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirme sua senha"
+minlength="6"
+required
+>
+
+<button type="submit">
+Criar minha conta
+</button>
+
+</form>
+
+<p id="message"></p>
+
+<a class="link" href="login.html">
+Já tenho uma conta
+</a>
+
+<a class="link" href="index.html">
+Voltar para o site
+</a>
+
+</div>
+
+<script type="module" src="auth.js"></script>
+
+</body>
+</html>
