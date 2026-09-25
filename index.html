@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
-
-<meta
-name=“viewport”
-content=“width=device-width, initial-scale=1.0”
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PokéCommunity</title>
+
 <style>
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #0d1117;
     color: white;
 }
+
 /* HEADER */
+
 header {
     background: #151b24;
     border-bottom: 2px solid #e63946;
@@ -31,6 +35,7 @@ header {
     top: 0;
     z-index: 100;
 }
+
 .nav {
     max-width: 1100px;
     margin: auto;
@@ -39,54 +44,59 @@ header {
     justify-content: space-between;
     gap: 20px;
 }
+
 .logo {
     font-size: 24px;
     font-weight: bold;
 }
+
 .logo span {
     color: #e63946;
 }
+
 nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 15px;
 }
+
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 12px;
     font-weight: bold;
 }
+
 nav a:hover {
     color: #e63946;
 }
+
 /* LOGIN */
+
 .login-links {
     display: flex;
-    align-items: center;
     gap: 10px;
-    margin-left: 15px;
+    margin-left: 10px;
 }
+
 .login-links a {
-    margin-left: 0;
     padding: 9px 14px;
     border-radius: 8px;
     border: 1px solid #e63946;
 }
+
 .login-links .register {
     background: #e63946;
     color: white;
 }
+
 .login-links .register:hover {
     background: #ff4d5a;
     color: white;
 }
-.login-links .login:hover {
-    background: #e63946;
-    color: white;
-}
+
 /* HERO */
+
 .hero {
     min-height: 480px;
     display: flex;
@@ -94,30 +104,37 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     padding: 40px 20px;
+
     background:
     linear-gradient(
-        rgba(13,17,23,.75),
+        rgba(13,17,23,.80),
         rgba(13,17,23,.95)
     ),
     url("https://images.unsplash.com/photo-1606503153255-59d8b8b8212f?auto=format&fit=crop&w=1600&q=80");
+
     background-size: cover;
     background-position: center;
 }
+
 .hero-content {
     max-width: 700px;
 }
+
 .hero h1 {
     font-size: 50px;
     margin-bottom: 15px;
 }
+
 .hero h1 span {
     color: #e63946;
 }
+
 .hero p {
     font-size: 18px;
     color: #c9d1d9;
     margin-bottom: 30px;
 }
+
 .btn {
     display: inline-block;
     background: #e63946;
@@ -130,54 +147,37 @@ nav a:hover {
     cursor: pointer;
     transition: .2s;
 }
+
 .btn:hover {
-    transform: scale(1.05);
     background: #ff4d5a;
+    transform: scale(1.03);
 }
+
 /* CONTAINER */
+
 .container {
     max-width: 1100px;
     margin: auto;
     padding: 50px 20px;
 }
+
 .section-title {
     font-size: 30px;
     margin-bottom: 25px;
 }
+
 .section-title span {
     color: #e63946;
 }
-/* CARDS */
-.cards {
-    display: grid;
-    grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-.card {
-    background: #161d27;
-    border: 1px solid #252f3d;
-    border-radius: 15px;
-    padding: 20px;
-    transition: .2s;
-}
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #e63946;
-}
-.card h3 {
-    margin-bottom: 10px;
-}
-.card p {
-    color: #9da7b3;
-    line-height: 1.5;
-}
+
 /* POKEMON */
+
 .search-area {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
+
 .search-area input {
     flex: 1;
     padding: 15px;
@@ -188,23 +188,23 @@ nav a:hover {
     font-size: 16px;
     outline: none;
 }
+
 .search-area input:focus {
     border-color: #e63946;
 }
-.search-area .btn {
-    min-width: 110px;
-}
+
 .pokedex-status {
     color: #8b949e;
     margin-bottom: 20px;
     text-align: center;
 }
+
 .pokemon-grid {
     display: grid;
-    grid-template-columns:
-    repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
+
 .pokemon {
     background: #161d27;
     border-radius: 15px;
@@ -213,23 +213,28 @@ nav a:hover {
     border: 1px solid #252f3d;
     transition: .2s;
 }
+
 .pokemon:hover {
     transform: translateY(-5px);
     border-color: #e63946;
 }
+
 .pokemon img {
     width: 140px;
     height: 140px;
     object-fit: contain;
 }
+
 .pokemon h3 {
     margin-top: 10px;
     font-size: 19px;
 }
+
 .pokemon-id {
     color: #8b949e;
     font-size: 14px;
 }
+
 .pokemon-types {
     display: flex;
     justify-content: center;
@@ -237,13 +242,16 @@ nav a:hover {
     gap: 6px;
     margin-top: 12px;
 }
+
 .type {
     padding: 6px 9px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
-    background: #252f3d;
 }
+
+/* TIPOS */
+
 .type-normal { background: #666; }
 .type-fire { background: #b93838; }
 .type-water { background: #2864a8; }
@@ -262,7 +270,9 @@ nav a:hover {
 .type-dark { background: #393939; }
 .type-steel { background: #59616b; }
 .type-fairy { background: #9c5d79; }
+
 /* PAGINAÇÃO */
+
 .pagination {
     display: flex;
     align-items: center;
@@ -270,6 +280,7 @@ nav a:hover {
     gap: 20px;
     margin-top: 35px;
 }
+
 .pagination button {
     background: #e63946;
     border: none;
@@ -279,21 +290,23 @@ nav a:hover {
     cursor: pointer;
     font-weight: bold;
 }
-.pagination button:hover:not(:disabled) {
-    background: #ff4d5a;
-}
+
 .pagination button:disabled {
     opacity: .4;
     cursor: not-allowed;
 }
+
 #pageInfo {
     color: #c9d1d9;
     font-weight: bold;
 }
+
 /* COMMUNITY */
+
 .community {
     background: #111821;
 }
+
 .post {
     background: #161d27;
     border-radius: 15px;
@@ -301,12 +314,14 @@ nav a:hover {
     margin-bottom: 15px;
     border: 1px solid #252f3d;
 }
+
 .user {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 15px;
 }
+
 .avatar {
     width: 45px;
     height: 45px;
@@ -317,41 +332,55 @@ nav a:hover {
     justify-content: center;
     font-weight: bold;
 }
+
 .post p {
     color: #d0d7de;
     line-height: 1.5;
 }
+
 .actions {
     margin-top: 15px;
     display: flex;
     gap: 20px;
     color: #8b949e;
 }
-/* NEWS */
+
+/* NOTÍCIAS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
 .news-card {
     background: #161d27;
     border-radius: 15px;
     overflow: hidden;
     border: 1px solid #252f3d;
 }
+
 .news-image {
     height: 150px;
-    background:
-    linear-gradient(135deg, #e63946, #7b1e28);
+    background: linear-gradient(135deg, #e63946, #7b1e28);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 50px;
 }
+
 .news-content {
     padding: 20px;
 }
+
 .news-content p {
     color: #9da7b3;
     margin-top: 10px;
     line-height: 1.5;
 }
+
 /* FOOTER */
+
 footer {
     text-align: center;
     padding: 30px;
@@ -359,298 +388,369 @@ footer {
     color: #8b949e;
     margin-top: 30px;
 }
+
 /* MOBILE */
+
 @media(max-width: 700px) {
+
     .nav {
         flex-direction: column;
         gap: 15px;
     }
+
     nav {
         justify-content: center;
     }
+
     nav a {
-        margin: 0 5px;
         font-size: 14px;
     }
+
     .login-links {
-        margin-left: 0;
         width: 100%;
         justify-content: center;
+        margin-left: 0;
     }
-    .login-links a {
-        margin: 0;
-    }
+
     .hero h1 {
         font-size: 38px;
     }
+
     .hero p {
         font-size: 16px;
     }
+
     .search-area {
         flex-direction: column;
     }
+
     .search-area .btn {
         width: 100%;
     }
+
     .pagination {
         gap: 10px;
     }
-    .pagination button {
-        padding: 10px 12px;
-    }
+
 }
+
 </style>
 </head>
+
 <body>
+
 <header>
+
 <div class="nav">
+
 <div class="logo">
 ⚡ Poké<span>Community</span>
 </div>
+
 <nav>
 
-Início
+<a href="#inicio">Início</a>
 
-Pokédex
+<a href="#pokedex">Pokédex</a>
 
-Comunidade
+<a href="#comunidade">Comunidade</a>
 
-Notícias
+<a href="#noticias">Notícias</a>
 
 <div class="login-links">
 
-<a
-href=“login.html”
-class=“login”
-
+<a href="login.html" class="login">
 Entrar
-<a
-href=“cadastro.html”
-class=“register”
+</a>
 
+<a href="cadastro.html" class="register">
 Criar conta
+</a>
+
 </div>
+
 </nav>
+
 </div>
+
 </header>
+
+
 <!-- HERO -->
-<section
-class="hero"
-id="inicio"
->
+
+<section class="hero" id="inicio">
+
 <div class="hero-content">
+
 <h1>
 Bem-vindo à
 <span>PokéCommunity</span>
 </h1>
+
 <p>
 A comunidade para quem realmente gosta de Pokémon.
 Explore, converse, monte seu time e compartilhe suas aventuras.
 </p>
 
-<a
-href=”#pokedex”
-class=“btn”
-
+<a href="#pokedex" class="btn">
 Explorar Pokédex
+</a>
+
 </div>
+
 </section>
+
+
 <!-- DESTAQUES -->
+
 <section class="container">
+
 <h2 class="section-title">
-🔥 Pokémon
-<span>em destaque</span>
+🔥 Pokémon <span>em destaque</span>
 </h2>
-<div
-class="pokemon-grid"
-id="featured"
-></div>
+
+<div class="pokemon-grid" id="featured"></div>
+
 </section>
+
+
 <!-- POKEDEX -->
-<section
-class="container"
-id="pokedex"
->
+
+<section class="container" id="pokedex">
+
 <h2 class="section-title">
-📖
-<span>Pokédex</span>
+📖 <span>Pokédex</span>
 </h2>
+
 <div class="search-area">
 
 <input
-type=“text”
-id=“pokemonSearch”
-placeholder=“Digite o nome, número ou nome em português…”
-
-<button
-class=“btn”
-id=“searchButton”
-
-Buscar
-</div>
-<div
-class="pokedex-status"
-id="pokedexStatus"
+type="text"
+id="pokemonSearch"
+placeholder="Digite o nome ou número do Pokémon..."
 >
+
+<button class="btn" id="searchButton">
+Buscar
+</button>
+
+</div>
+
+<div class="pokedex-status" id="pokedexStatus">
 Carregando Pokédex...
 </div>
-<div
-class="pokemon-grid"
-id="pokemonList"
-></div>
+
+<div class="pokemon-grid" id="pokemonList"></div>
+
 <div class="pagination">
 
-<button
-id=“prevPage”
-disabled
-
+<button id="prevPage" disabled>
 ← Anterior
+</button>
+
 <span id="pageInfo">
 Página 1
 </span>
 
-<button
-id=“nextPage”
-
+<button id="nextPage">
 Próxima →
+</button>
+
 </div>
+
 </section>
+
+
 <!-- COMUNIDADE -->
-<section
-class="community"
-id="comunidade"
->
+
+<section class="community" id="comunidade">
+
 <div class="container">
+
 <h2 class="section-title">
-👥 Nossa
-<span>Comunidade</span>
+👥 Nossa <span>Comunidade</span>
 </h2>
+
 <div class="post">
+
 <div class="user">
+
 <div class="avatar">
 A
 </div>
+
 <div>
-<strong>
-AshTrainer
-</strong>
+
+<strong>AshTrainer</strong>
+
 <br>
+
 <small style="color:#8b949e">
 há 10 minutos
 </small>
+
 </div>
+
 </div>
+
 <p>
 Qual Pokémon vocês escolheriam para começar uma nova aventura?
 Eu iria de Charizard! 🔥
 </p>
+
 <div class="actions">
-
-❤️ 24
-
-💬 8
-
-🔗 Compartilhar
+<span>❤️ 24</span>
+<span>💬 8</span>
+<span>🔗 Compartilhar</span>
+</div>
 
 </div>
-</div>
+
+
 <div class="post">
+
 <div class="user">
+
 <div class="avatar">
 M
 </div>
+
 <div>
-<strong>
-MistyBlue
-</strong>
+
+<strong>MistyBlue</strong>
+
 <br>
+
 <small style="color:#8b949e">
 há 35 minutos
 </small>
+
 </div>
+
 </div>
+
 <p>
 Acabei de completar minha equipe competitiva! 🏆
 Quem quiser batalhar pode me chamar.
 </p>
+
 <div class="actions">
-
-❤️ 17
-
-💬 5
-
-🔗 Compartilhar
+<span>❤️ 17</span>
+<span>💬 5</span>
+<span>🔗 Compartilhar</span>
+</div>
 
 </div>
+
 </div>
-</div>
+
 </section>
+
+
 <!-- NOTÍCIAS -->
-<section
-class="container"
-id="noticias"
->
+
+<section class="container" id="noticias">
+
 <h2 class="section-title">
-📰
-<span>Notícias</span>
+📰 <span>Notícias</span>
 </h2>
+
 <div class="cards">
+
 <div class="news-card">
+
 <div class="news-image">
 ⚡
 </div>
+
 <div class="news-content">
+
 <h3>
 Novos Pokémon em destaque
 </h3>
+
 <p>
 Confira as novidades, eventos e descobertas da comunidade.
 </p>
+
 </div>
+
 </div>
+
+
 <div class="news-card">
+
 <div class="news-image">
 🏆
 </div>
+
 <div class="news-content">
+
 <h3>
 Torneio da Comunidade
 </h3>
+
 <p>
 Prepare seu melhor time e participe dos próximos torneios.
 </p>
+
 </div>
+
 </div>
+
+
 <div class="news-card">
+
 <div class="news-image">
 🎮
 </div>
+
 <div class="news-content">
+
 <h3>
 Eventos especiais
 </h3>
+
 <p>
 Fique por dentro dos próximos eventos e desafios.
 </p>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
+
 <footer>
+
 <p>
 © 2026 PokéCommunity
 </p>
+
 <p style="margin-top:8px;">
 Uma comunidade criada por fãs de Pokémon.
 </p>
+
 </footer>
+
+
 <script>
 
 const pokemonList = document.getElementById("pokemonList");
 const featured = document.getElementById("featured");
 const searchInput = document.getElementById("pokemonSearch");
+const searchButton = document.getElementById("searchButton");
+
+const prevPage = document.getElementById("prevPage");
+const nextPage = document.getElementById("nextPage");
+const pageInfo = document.getElementById("pageInfo");
+const status = document.getElementById("pokedexStatus");
 
 const tipos = {
+
     normal: ["⚪", "Normal"],
     fire: ["🔥", "Fogo"],
     water: ["💧", "Água"],
@@ -669,14 +769,38 @@ const tipos = {
     dark: ["🌑", "Sombrio"],
     steel: ["⚙️", "Aço"],
     fairy: ["🧚", "Fada"]
+
 };
 
-function nomeTipo(tipo) {
-    if (tipos[tipo]) {
-        return tipos[tipo][0] + " " + tipos[tipo][1];
+const nomes = {
+
+    bulbasaur: "Bulbassauro",
+    ivysaur: "Ivissauro",
+    venusaur: "Venussauro",
+    charmander: "Charmander",
+    charmeleon: "Charmeleon",
+    charizard: "Charizard",
+    squirtle: "Squirtle",
+    wartortle: "Wartortle",
+    blastoise: "Blastoise",
+    pikachu: "Pikachu",
+    raichu: "Raichu",
+    mewtwo: "Mewtwo",
+    mew: "Mew",
+    dragonite: "Dragonite",
+    lapras: "Lapras",
+    gengar: "Gengar"
+
+};
+
+function nomePokemon(nome) {
+
+    if (nomes[nome]) {
+        return nomes[nome];
     }
 
-    return tipo;
+    return nome.charAt(0).toUpperCase() + nome.slice(1);
+
 }
 
 function criarCard(pokemon, container) {
@@ -689,14 +813,29 @@ function criarCard(pokemon, container) {
         pokemon.sprites.other["official-artwork"].front_default ||
         pokemon.sprites.front_default;
 
-    const tiposPokemon = pokemon.types
-        .map(t => nomeTipo(t.type.name))
-        .join(" / ");
+    let tiposHTML = "";
+
+    pokemon.types.forEach(tipo => {
+
+        const dados = tipos[tipo.type.name];
+
+        if (dados) {
+
+            tiposHTML += `
+                <span class="type type-${tipo.type.name}">
+                    ${dados[0]} ${dados[1]}
+                </span>
+            `;
+
+        }
+
+    });
 
     div.innerHTML = `
+
         <img
             src="${imagem}"
-            alt="${pokemon.name}"
+            alt="${nomePokemon(pokemon.name)}"
         >
 
         <div class="pokemon-id">
@@ -704,24 +843,34 @@ function criarCard(pokemon, container) {
         </div>
 
         <h3>
-            ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+            ${nomePokemon(pokemon.name)}
         </h3>
 
-        <p style="color:#9da7b3;margin-top:8px;">
-            ${tiposPokemon}
-        </p>
+        <div class="pokemon-types">
+            ${tiposHTML}
+        </div>
+
     `;
 
     container.appendChild(div);
+
 }
 
 
-/* POKÉMON INICIAIS */
+/* POKÉDEX */
 
-async function carregarPokemon() {
+let pagina = 1;
 
-    pokemonList.innerHTML =
-        "<p>Carregando Pokédex...</p>";
+const porPagina = 20;
+
+let todosPokemon = [];
+
+
+async function carregarLista() {
+
+    status.textContent = "Carregando Pokédex...";
+
+    pokemonList.innerHTML = "";
 
     try {
 
@@ -729,55 +878,142 @@ async function carregarPokemon() {
             "https://pokeapi.co/api/v2/pokemon?limit=151"
         );
 
+        if (!resposta.ok) {
+            throw new Error("Erro na API");
+        }
+
         const dados = await resposta.json();
 
-        pokemonList.innerHTML = "";
+        todosPokemon = dados.results;
 
-        for (const pokemon of dados.results) {
-
-            const respostaPokemon =
-                await fetch(pokemon.url);
-
-            const dadosPokemon =
-                await respostaPokemon.json();
-
-            criarCard(
-                dadosPokemon,
-                pokemonList
-            );
-        }
+        await mostrarPagina();
 
     } catch (erro) {
 
         console.error(erro);
 
+        status.textContent =
+            "Erro ao carregar a Pokédex.";
+
         pokemonList.innerHTML = `
             <p style="color:#ff6b6b;">
-                Não foi possível carregar a Pokédex.
+                Não foi possível carregar os Pokémon.
             </p>
         `;
+
     }
+
 }
 
 
-/* PESQUISA */
+async function mostrarPagina() {
 
-async function searchPokemon() {
+    pokemonList.innerHTML = "";
+
+    const inicio = (pagina - 1) * porPagina;
+
+    const fim = inicio + porPagina;
+
+    const lista = todosPokemon.slice(inicio, fim);
+
+    status.textContent =
+        `Mostrando Pokémon ${inicio + 1} até ${Math.min(fim, todosPokemon.length)}`;
+
+    for (const item of lista) {
+
+        try {
+
+            const resposta = await fetch(item.url);
+
+            const pokemon = await resposta.json();
+
+            criarCard(pokemon, pokemonList);
+
+        } catch (erro) {
+
+            console.error(erro);
+
+        }
+
+    }
+
+    const totalPaginas =
+        Math.ceil(todosPokemon.length / porPagina);
+
+    pageInfo.textContent =
+        `Página ${pagina} de ${totalPaginas}`;
+
+    prevPage.disabled =
+        pagina === 1;
+
+    nextPage.disabled =
+        pagina === totalPaginas;
+
+}
+
+
+/* PAGINAÇÃO */
+
+prevPage.addEventListener("click", function() {
+
+    if (pagina > 1) {
+
+        pagina--;
+
+        mostrarPagina();
+
+        document
+            .getElementById("pokedex")
+            .scrollIntoView();
+
+    }
+
+});
+
+
+nextPage.addEventListener("click", function() {
+
+    const totalPaginas =
+        Math.ceil(todosPokemon.length / porPagina);
+
+    if (pagina < totalPaginas) {
+
+        pagina++;
+
+        mostrarPagina();
+
+        document
+            .getElementById("pokedex")
+            .scrollIntoView();
+
+    }
+
+});
+
+
+/* BUSCA */
+
+async function buscarPokemon() {
 
     const busca =
         searchInput.value
-            .trim()
-            .toLowerCase();
+        .trim()
+        .toLowerCase();
 
     if (!busca) {
 
-        carregarPokemon();
+        pagina = 1;
+
+        mostrarPagina();
 
         return;
+
     }
 
-    pokemonList.innerHTML =
-        "<p>Procurando...</p>";
+    status.textContent =
+        "Procurando Pokémon...";
+
+    pokemonList.innerHTML = "";
 
     try {
 
@@ -792,32 +1028,48 @@ async function searchPokemon() {
         const pokemon =
             await resposta.json();
 
-        pokemonList.innerHTML = "";
-
         criarCard(
             pokemon,
             pokemonList
         );
 
+        status.textContent =
+            "Resultado da busca";
+
+        prevPage.disabled = true;
+        nextPage.disabled = true;
+
+        pageInfo.textContent =
+            "Busca";
+
     } catch {
+
+        status.textContent =
+            "Pokémon não encontrado.";
 
         pokemonList.innerHTML = `
             <p style="color:#ff6b6b;">
                 Pokémon não encontrado 😢
             </p>
         `;
+
     }
+
 }
 
 
-/* ENTER */
+searchButton.addEventListener(
+    "click",
+    buscarPokemon
+);
+
 
 searchInput.addEventListener(
     "keydown",
     function(event) {
 
         if (event.key === "Enter") {
-            searchPokemon();
+            buscarPokemon();
         }
 
     }
@@ -852,14 +1104,19 @@ async function carregarDestaques() {
             console.error(erro);
 
         }
+
     }
+
 }
 
 
 /* INICIAR */
 
-carregarPokemon();
+carregarLista();
 
 carregarDestaques();
 
 </script>
+
+</body>
+</html>
