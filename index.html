@@ -5,25 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070a10">
 <title>PokéCommunity — Pokédex Online</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
-
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#070a10;
     color:#fff;
     overflow-x:hidden;
 }
-
 button,input{font:inherit}
 button{cursor:pointer}
 a{text-decoration:none;color:inherit}
-
-/* FUNDO */
-
 body::before{
     content:"";
     position:fixed;
@@ -34,9 +27,7 @@ body::before{
         radial-gradient(circle at 10% 15%,rgba(230,57,70,.13),transparent 28%),
         radial-gradient(circle at 90% 30%,rgba(40,100,255,.10),transparent 30%);
 }
-
 /* PARTÍCULAS */
-
 .particles{
     position:fixed;
     inset:0;
@@ -44,7 +35,6 @@ body::before{
     pointer-events:none;
     z-index:-1;
 }
-
 .particle{
     position:absolute;
     width:4px;
@@ -54,7 +44,6 @@ body::before{
     box-shadow:0 0 12px rgba(255,255,255,.5);
     animation:particle 18s linear infinite;
 }
-
 .particle:nth-child(1){left:5%;top:90%}
 .particle:nth-child(2){left:18%;top:75%;animation-duration:22s}
 .particle:nth-child(3){left:31%;top:85%;animation-duration:16s}
@@ -63,16 +52,13 @@ body::before{
 .particle:nth-child(6){left:74%;top:75%;animation-duration:21s}
 .particle:nth-child(7){left:88%;top:88%;animation-duration:17s}
 .particle:nth-child(8){left:96%;top:60%;animation-duration:23s}
-
 @keyframes particle{
     from{transform:translateY(50px);opacity:0}
     15%{opacity:1}
     85%{opacity:1}
     to{transform:translateY(-1000px);opacity:0}
 }
-
 /* HEADER */
-
 header{
     position:fixed;
     top:0;
@@ -89,7 +75,6 @@ header{
     -webkit-backdrop-filter:blur(18px);
     z-index:100;
 }
-
 .logo{
     display:flex;
     align-items:center;
@@ -97,7 +82,6 @@ header{
     font-size:22px;
     font-weight:900;
 }
-
 .logo-icon{
     width:38px;
     height:38px;
@@ -109,45 +93,35 @@ header{
     box-shadow:0 0 25px rgba(230,57,70,.35);
     animation:pulse 3s ease-in-out infinite;
 }
-
 .logo-name{
     display:flex;
     gap:7px;
 }
-
 .logo-poke{color:#fff}
-
 .logo-community{
     color:#e63946;
     animation:glow 3s ease-in-out infinite;
 }
-
 @keyframes pulse{
     0%,100%{transform:scale(1)}
     50%{transform:scale(1.08)}
 }
-
 @keyframes glow{
     0%,100%{text-shadow:none}
     50%{text-shadow:0 0 18px rgba(230,57,70,.7)}
 }
-
 nav{
     display:flex;
     gap:28px;
 }
-
 nav a{
     color:#aeb7c6;
     font-size:14px;
     font-weight:bold;
     transition:.25s;
 }
-
 nav a:hover{color:#fff}
-
 /* HERO */
-
 .hero{
     min-height:100vh;
     display:flex;
@@ -155,13 +129,11 @@ nav a:hover{color:#fff}
     position:relative;
     padding:130px 7% 90px;
 }
-
 .hero-content{
     max-width:760px;
     position:relative;
     z-index:2;
 }
-
 .hero-badge{
     display:inline-block;
     padding:9px 14px;
@@ -173,26 +145,21 @@ nav a:hover{color:#fff}
     font-weight:bold;
     margin-bottom:25px;
 }
-
 .hero-badge span{color:#ffd166}
-
 .hero h1{
     font-size:clamp(48px,7vw,92px);
     line-height:.95;
     letter-spacing:-5px;
     margin-bottom:28px;
 }
-
 .hero h1 .red{
     color:#e63946;
     text-shadow:0 0 30px rgba(230,57,70,.25);
 }
-
 .hero h1 .outline{
     color:transparent;
     -webkit-text-stroke:1px rgba(255,255,255,.45);
 }
-
 .hero-description{
     max-width:650px;
     color:#9ca7b7;
@@ -200,13 +167,11 @@ nav a:hover{color:#fff}
     line-height:1.8;
     margin-bottom:35px;
 }
-
 .hero-buttons{
     display:flex;
     flex-wrap:wrap;
     gap:14px;
 }
-
 .primary-button,
 .secondary-button{
     display:inline-flex;
@@ -217,28 +182,23 @@ nav a:hover{color:#fff}
     font-weight:800;
     transition:.25s;
 }
-
 .primary-button{
     background:#e63946;
     color:#fff;
     box-shadow:0 10px 35px rgba(230,57,70,.22);
 }
-
 .primary-button:hover{
     background:#ff4d5a;
     transform:translateY(-3px);
 }
-
 .secondary-button{
     border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.04);
 }
-
 .secondary-button:hover{
     background:rgba(255,255,255,.08);
     transform:translateY(-3px);
 }
-
 .hero-ball{
     position:absolute;
     right:7%;
@@ -252,7 +212,6 @@ nav a:hover{color:#fff}
     box-shadow:0 0 80px rgba(230,57,70,.13);
     animation:ball 5s ease-in-out infinite;
 }
-
 .hero-ball::before{
     content:"";
     position:absolute;
@@ -265,18 +224,14 @@ nav a:hover{color:#fff}
     border:18px solid #11151d;
     box-shadow:0 0 0 8px rgba(255,255,255,.3);
 }
-
 @keyframes ball{
     0%,100%{transform:translateY(-50%) rotate(0)}
     50%{transform:translateY(calc(-50% - 18px)) rotate(4deg)}
 }
-
 /* SEÇÕES */
-
 .section{
     padding:100px 7%;
 }
-
 .section-header{
     display:flex;
     align-items:end;
@@ -284,7 +239,6 @@ nav a:hover{color:#fff}
     gap:30px;
     margin-bottom:35px;
 }
-
 .section-label{
     color:#e63946;
     text-transform:uppercase;
@@ -293,31 +247,25 @@ nav a:hover{color:#fff}
     font-weight:900;
     margin-bottom:10px;
 }
-
 .section-title{
     font-size:clamp(30px,4vw,48px);
     letter-spacing:-2px;
 }
-
 .section-description{
     max-width:500px;
     color:#8994a5;
     line-height:1.7;
 }
-
 /* BUSCA */
-
 .search-area{
     display:flex;
     gap:12px;
     margin-bottom:18px;
 }
-
 .search-box{
     position:relative;
     flex:1;
 }
-
 .search-box span{
     position:absolute;
     left:18px;
@@ -326,7 +274,6 @@ nav a:hover{color:#fff}
     color:#7f8b9c;
     font-size:18px;
 }
-
 .search-box input{
     width:100%;
     padding:17px 20px 17px 50px;
@@ -336,12 +283,10 @@ nav a:hover{color:#fff}
     background:rgba(255,255,255,.045);
     color:#fff;
 }
-
 .search-box input:focus{
     border-color:rgba(230,57,70,.55);
     box-shadow:0 0 0 4px rgba(230,57,70,.08);
 }
-
 .search-button{
     border:0;
     padding:0 25px;
@@ -350,18 +295,14 @@ nav a:hover{color:#fff}
     color:#fff;
     font-weight:bold;
 }
-
 .search-button:hover{background:#ff4d5a}
-
 /* FILTROS */
-
 .filters{
     display:flex;
     flex-wrap:wrap;
     gap:7px;
     margin-bottom:25px;
 }
-
 .filter-button{
     border:1px solid rgba(255,255,255,.08);
     background:rgba(255,255,255,.035);
@@ -372,28 +313,23 @@ nav a:hover{color:#fff}
     font-weight:bold;
     transition:.2s;
 }
-
 .filter-button:hover,
 .filter-button.active{
     background:rgba(230,57,70,.13);
     border-color:rgba(230,57,70,.4);
     color:#fff;
 }
-
 /* CONTROLES */
-
 .pokedex-controls{
     display:flex;
     align-items:center;
     justify-content:space-between;
     margin-bottom:20px;
 }
-
 .results-count{
     color:#788496;
     font-size:13px;
 }
-
 .shiny-toggle{
     border:1px solid rgba(255,209,102,.25);
     background:rgba(255,209,102,.07);
@@ -403,22 +339,17 @@ nav a:hover{color:#fff}
     font-size:13px;
     font-weight:bold;
 }
-
 .shiny-toggle.active{
     background:rgba(255,209,102,.18);
     border-color:rgba(255,209,102,.5);
 }
-
 /* GRID */
-
 .pokedex-grid{
     display:grid;
     grid-template-columns:repeat(5,minmax(0,1fr));
     gap:18px;
 }
-
 /* CARD */
-
 .pokedex-card{
     position:relative;
     overflow:hidden;
@@ -428,13 +359,11 @@ nav a:hover{color:#fff}
     background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
     transition:.3s;
 }
-
 .pokedex-card:hover{
     transform:translateY(-7px);
     border-color:rgba(230,57,70,.4);
     box-shadow:0 25px 55px rgba(0,0,0,.3);
 }
-
 .pokemon-number{
     position:absolute;
     top:15px;
@@ -443,7 +372,6 @@ nav a:hover{color:#fff}
     font-size:11px;
     font-weight:900;
 }
-
 .pokemon-shiny-badge{
     position:absolute;
     top:12px;
@@ -455,7 +383,6 @@ nav a:hover{color:#fff}
     padding:5px 7px;
     font-size:10px;
 }
-
 .pokemon-image{
     width:170px;
     height:170px;
@@ -465,27 +392,22 @@ nav a:hover{color:#fff}
     filter:drop-shadow(0 15px 15px rgba(0,0,0,.3));
     transition:.3s;
 }
-
 .pokedex-card:hover .pokemon-image{
     transform:scale(1.08) translateY(-4px);
 }
-
 .pokemon-info{
     padding:8px 17px 18px;
 }
-
 .pokemon-name{
     font-size:20px;
     text-transform:capitalize;
     margin-bottom:9px;
 }
-
 .type-list{
     display:flex;
     flex-wrap:wrap;
     gap:6px;
 }
-
 .type-badge{
     display:inline-flex;
     align-items:center;
@@ -496,9 +418,7 @@ nav a:hover{color:#fff}
     font-size:10px;
     font-weight:900;
 }
-
-/* CORES DOS TIPOS */
-
+/* TIPOS */
 .type-normal{background:rgba(168,167,122,.18)}
 .type-fire{background:rgba(240,80,48,.18)}
 .type-water{background:rgba(80,140,240,.18)}
@@ -517,9 +437,7 @@ nav a:hover{color:#fff}
 .type-dark{background:rgba(80,70,80,.25)}
 .type-steel{background:rgba(130,150,170,.18)}
 .type-fairy{background:rgba(235,130,180,.18)}
-
 /* PAGINAÇÃO */
-
 .pagination{
     display:flex;
     justify-content:center;
@@ -528,7 +446,6 @@ nav a:hover{color:#fff}
     gap:8px;
     margin-top:40px;
 }
-
 .page-button{
     min-width:40px;
     height:40px;
@@ -538,31 +455,25 @@ nav a:hover{color:#fff}
     color:#9ca7b7;
     font-weight:bold;
 }
-
 .page-button:hover{
     border-color:rgba(230,57,70,.4);
     color:#fff;
 }
-
 .page-button.active{
     background:#e63946;
     border-color:#e63946;
     color:#fff;
 }
-
 .page-button:disabled{
     opacity:.35;
     cursor:not-allowed;
 }
-
 /* SHINY */
-
 .shiny-grid{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:20px;
 }
-
 .shiny-card{
     min-height:260px;
     display:flex;
@@ -573,24 +484,20 @@ nav a:hover{color:#fff}
     border-radius:24px;
     background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
 }
-
 .shiny-info small{
     color:#ffd166;
     font-weight:900;
     letter-spacing:2px;
 }
-
 .shiny-info h3{
     margin-top:8px;
     font-size:25px;
     text-transform:capitalize;
 }
-
 .shiny-info p{
     color:#818d9f;
     margin-top:7px;
 }
-
 .shiny-image{
     width:155px;
     height:155px;
@@ -598,20 +505,16 @@ nav a:hover{color:#fff}
     filter:drop-shadow(0 15px 20px rgba(0,0,0,.35));
     animation:shinyFloat 4s ease-in-out infinite;
 }
-
 @keyframes shinyFloat{
     0%,100%{transform:translateY(0)}
     50%{transform:translateY(-10px)}
 }
-
 /* RECURSOS */
-
 .features{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:20px;
 }
-
 .feature{
     padding:30px;
     border:1px solid rgba(255,255,255,.08);
@@ -619,12 +522,10 @@ nav a:hover{color:#fff}
     background:rgba(255,255,255,.025);
     transition:.3s;
 }
-
 .feature:hover{
     transform:translateY(-5px);
     border-color:rgba(230,57,70,.25);
 }
-
 .feature-icon{
     width:50px;
     height:50px;
@@ -636,19 +537,13 @@ nav a:hover{color:#fff}
     margin-bottom:20px;
     font-size:23px;
 }
-
-.feature h3{
-    margin-bottom:10px;
-}
-
+.feature h3{margin-bottom:10px}
 .feature p{
     color:#7f8b9c;
     line-height:1.7;
     font-size:14px;
 }
-
 /* CTA */
-
 .cta{
     margin:20px 7% 100px;
     padding:65px 30px;
@@ -657,21 +552,17 @@ nav a:hover{color:#fff}
     border:1px solid rgba(230,57,70,.2);
     background:radial-gradient(circle at center,rgba(230,57,70,.14),rgba(255,255,255,.025) 55%);
 }
-
 .cta h2{
     font-size:clamp(30px,4vw,50px);
     margin-bottom:15px;
 }
-
 .cta p{
     max-width:600px;
     margin:0 auto 28px;
     color:#8d98a8;
     line-height:1.7;
 }
-
 /* FOOTER */
-
 footer{
     padding:40px 7%;
     border-top:1px solid rgba(255,255,255,.07);
@@ -679,11 +570,8 @@ footer{
     text-align:center;
     font-size:13px;
 }
-
 footer strong{color:#e63946}
-
 /* MODAL */
-
 .welcome-overlay{
     position:fixed;
     inset:0;
@@ -699,12 +587,10 @@ footer strong{color:#e63946}
     visibility:hidden;
     transition:.35s;
 }
-
 .welcome-overlay.active{
     opacity:1;
     visibility:visible;
 }
-
 .welcome-box{
     position:relative;
     width:100%;
@@ -718,11 +604,9 @@ footer strong{color:#e63946}
     transform:translateY(25px) scale(.96);
     transition:.4s;
 }
-
 .welcome-overlay.active .welcome-box{
     transform:translateY(0) scale(1);
 }
-
 .welcome-close{
     position:absolute;
     top:16px;
@@ -735,12 +619,10 @@ footer strong{color:#e63946}
     color:#8994a5;
     font-size:22px;
 }
-
 .welcome-close:hover{
     background:rgba(230,57,70,.15);
     color:#fff;
 }
-
 .welcome-icon{
     width:70px;
     height:70px;
@@ -753,20 +635,16 @@ footer strong{color:#e63946}
     box-shadow:0 15px 40px rgba(230,57,70,.25);
     font-size:32px;
 }
-
 .welcome-box h2{
     font-size:30px;
     margin-bottom:15px;
 }
-
 .welcome-box h2 span{color:#e63946}
-
 .welcome-box p{
     color:#929dad;
     line-height:1.8;
     font-size:15px;
 }
-
 .welcome-button{
     margin-top:25px;
     border:0;
@@ -776,104 +654,80 @@ footer strong{color:#e63946}
     color:#fff;
     font-weight:bold;
 }
-
 .welcome-button:hover{background:#ff4d5a}
-
 /* RESPONSIVO */
-
 @media(max-width:1100px){
     .pokedex-grid{
         grid-template-columns:repeat(4,1fr);
     }
-
     .hero-ball{
         opacity:.18;
     }
 }
-
 @media(max-width:800px){
     nav{display:none}
-
     .hero{
         padding:120px 25px 80px;
     }
-
     .hero-ball{
         width:380px;
         height:380px;
         right:-180px;
     }
-
     .section{
         padding:80px 25px;
     }
-
     .section-header{
         display:block;
     }
-
     .section-description{
         margin-top:15px;
     }
-
     .pokedex-grid{
         grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
-
     .shiny-grid{
         grid-template-columns:1fr;
     }
-
     .features{
         grid-template-columns:1fr;
     }
-
     .search-area{
         flex-direction:column;
     }
-
     .search-button{
         height:50px;
     }
-
     .cta{
         margin:0 25px 80px;
     }
 }
-
 @media(max-width:420px){
     .logo{
         font-size:18px;
     }
-
     .logo-icon{
         width:34px;
         height:34px;
     }
-
     .hero h1{
         font-size:45px;
     }
-
     .pokedex-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
     .pokemon-image{
         width:130px;
         height:130px;
     }
-
     .pokemon-name{
         font-size:17px;
     }
 }
 </style>
 </head>
-
 <body>
-
 <div class="particles">
     <div class="particle"></div>
     <div class="particle"></div>
@@ -884,39 +738,27 @@ footer strong{color:#e63946}
     <div class="particle"></div>
     <div class="particle"></div>
 </div>
-
 <header>
-
 <a href="#inicio" class="logo">
-
-    <div class="logo-icon">⚡</div>
-
-    <div class="logo-name">
-        <span class="logo-poke">Poké</span>
-        <span class="logo-community">Community</span>
-    </div>
-
+<div class="logo-icon">⚡</div>
+<div class="logo-name">
+    <span class="logo-poke">Poké</span>
+    <span class="logo-community">Community</span>
+</div>
 </a>
-
 <nav>
     <a href="#inicio">Início</a>
     <a href="#pokedex">Pokédex</a>
     <a href="#shiny">✨ Shiny</a>
     <a href="#sobre">Sobre</a>
 </nav>
-
 </header>
-
 <main>
-
 <section class="hero" id="inicio">
-
 <div class="hero-content">
-
 <div class="hero-badge">
     <span>●</span> Pokédex online
 </div>
-
 <h1>
     Descubra o mundo
     <br>
@@ -924,155 +766,86 @@ footer strong{color:#e63946}
     <br>
     <span class="outline">sem limites.</span>
 </h1>
-
 <p class="hero-description">
     Bem-vindo à PokéCommunity, uma Pokédex online
     criada para você descobrir Pokémon, consultar
     seus tipos, evoluções, habilidades e versões Shiny.
 </p>
-
 <div class="hero-buttons">
-
 <a href="#pokedex" class="primary-button">
     🔎 Explorar Pokédex
 </a>
-
 <a href="#shiny" class="secondary-button">
     ✨ Ver Shiny
 </a>
-
 </div>
-
 </div>
-
 <div class="hero-ball"></div>
-
 </section>
-
-
 <!-- POKÉDEX -->
-
 <section class="section" id="pokedex">
-
 <div class="section-header">
-
 <div>
     <div class="section-label">Explore</div>
     <h2 class="section-title">Pokédex</h2>
 </div>
-
 <p class="section-description">
     Pesquise Pokémon pelo nome ou número,
     filtre por tipo e veja suas versões normais
     ou Shiny.
 </p>
-
 </div>
-
-
 <div class="search-area">
-
 <div class="search-box">
 
-<span>🔎</span>
+🔎
 
 <input
-    id="searchInput"
-    type="text"
-    placeholder="Procure por nome ou número..."
-    autocomplete="off"
->
+id=“searchInput”
+type=“text”
+placeholder=“Procure por nome ou número…”
+autocomplete=“off”
 
 </div>
-
-<button
-    class="search-button"
-    id="searchButton"
->
+<button class="search-button" id="searchButton">
     Buscar
 </button>
-
 </div>
-
-
 <div class="filters" id="filters"></div>
-
-
 <div class="pokedex-controls">
-
-<span
-    class="results-count"
-    id="resultsCount"
->
+<span class="results-count" id="resultsCount">
     Carregando Pokémon...
 </span>
-
-<button
-    class="shiny-toggle"
-    id="shinyToggle"
->
+<button class="shiny-toggle" id="shinyToggle">
     ✨ Mostrar Shiny
 </button>
-
 </div>
-
-
-<div
-    class="pokedex-grid"
-    id="pokedexGrid"
-></div>
-
-
-<div
-    class="pagination"
-    id="pagination"
-></div>
-
+<div class="pokedex-grid" id="pokedexGrid"></div>
+<div class="pagination" id="pagination"></div>
 </section>
-
-
 <!-- SHINY -->
-
 <section class="section" id="shiny">
-
 <div class="section-header">
-
 <div>
     <div class="section-label">✨ Raros</div>
     <h2 class="section-title">Shiny em destaque</h2>
 </div>
-
 <p class="section-description">
     Algumas das versões Shiny disponíveis
     na Pokédex.
 </p>
-
 </div>
-
-<div
-    class="shiny-grid"
-    id="shinyGrid"
-></div>
-
+<div class="shiny-grid" id="shinyGrid"></div>
 </section>
-
-
 <!-- SOBRE -->
-
 <section class="section" id="sobre">
-
 <div class="section-header">
-
 <div>
     <div class="section-label">PokéCommunity</div>
     <h2 class="section-title">Conheça os Pokémon.</h2>
 </div>
-
 </div>
-
-
 <div class="features">
-
 <div class="feature">
     <div class="feature-icon">🔎</div>
     <h3>Busca rápida</h3>
@@ -1081,7 +854,6 @@ footer strong{color:#e63946}
         ou pelo número da Pokédex.
     </p>
 </div>
-
 <div class="feature">
     <div class="feature-icon">🔥</div>
     <h3>Tipos em português</h3>
@@ -1090,7 +862,6 @@ footer strong{color:#e63946}
         e identificados com símbolos.
     </p>
 </div>
-
 <div class="feature">
     <div class="feature-icon">✨</div>
     <h3>Versões Shiny</h3>
@@ -1099,7 +870,6 @@ footer strong{color:#e63946}
         alternativas dos Pokémon.
     </p>
 </div>
-
 <div class="feature">
     <div class="feature-icon">🧬</div>
     <h3>Evoluções</h3>
@@ -1108,7 +878,6 @@ footer strong{color:#e63946}
         também as linhas evolutivas.
     </p>
 </div>
-
 <div class="feature">
     <div class="feature-icon">📊</div>
     <h3>Informações</h3>
@@ -1117,7 +886,6 @@ footer strong{color:#e63946}
         importantes de cada Pokémon.
     </p>
 </div>
-
 <div class="feature">
     <div class="feature-icon">🌎</div>
     <h3>Explore</h3>
@@ -1126,63 +894,40 @@ footer strong{color:#e63946}
         melhor o universo Pokémon.
     </p>
 </div>
-
 </div>
-
 </section>
-
-
 <section class="cta">
-
 <h2>Sua jornada começa aqui.</h2>
-
 <p>
     Explore a Pokédex, descubra novos Pokémon
     e encontre suas versões Shiny.
 </p>
-
 <a href="#pokedex" class="primary-button">
     Começar a explorar
 </a>
-
 </section>
-
 </main>
-
-
 <footer>
-
 <p>
     ⚡ <strong>PokéCommunity</strong>
     — Uma Pokédex online para fãs de Pokémon.
 </p>
-
 </footer>
-
-
-<!-- MODAL -->
-
-<div
-    class="welcome-overlay"
-    id="welcomeOverlay"
->
-
+<!-- MODAL DE BOAS-VINDAS -->
+<div class="welcome-overlay" id="welcomeOverlay">
 <div class="welcome-box">
 
 <button
-    class="welcome-close"
-    id="welcomeClose"
-    aria-label="Fechar"
->
-    ×
+class=“welcome-close”
+id=“welcomeClose”
+aria-label=“Fechar”
+
+×
 </button>
-
 <div class="welcome-icon">⚡</div>
-
 <h2>
     Bem-vindo à <span>PokéCommunity!</span>
 </h2>
-
 <p>
     Uma Pokédex online criada para você
     tirar dúvidas, conhecer Pokémon,
@@ -1194,238 +939,131 @@ footer strong{color:#e63946}
 </p>
 
 <button
-    class="welcome-button"
-    id="welcomeButton"
->
-    Explorar Pokédex
+class=“welcome-button”
+id=“welcomeButton”
+
+Explorar Pokédex
 </button>
-
 </div>
-
 </div>
-
-
 <script>
-
-const API =
-    "https://pokeapi.co/api/v2/pokemon";
-
+const API = "https://pokeapi.co/api/v2/pokemon";
 const TOTAL_POKEMON = 1025;
-
 const PER_PAGE = 20;
-
 let currentPage = 1;
-
 let currentType = "all";
-
 let shinyMode = false;
-
 let searchMode = false;
-
 let searchResults = [];
-
-
 /* TIPOS */
-
 const types = {
-
-normal:{name:"Normal",icon:"⚪"},
-fire:{name:"Fogo",icon:"🔥"},
-water:{name:"Água",icon:"💧"},
-electric:{name:"Elétrico",icon:"⚡"},
-grass:{name:"Planta",icon:"🌿"},
-ice:{name:"Gelo",icon:"❄️"},
-fighting:{name:"Lutador",icon:"🥊"},
-poison:{name:"Veneno",icon:"☠️"},
-ground:{name:"Terrestre",icon:"🌎"},
-flying:{name:"Voador",icon:"🪽"},
-psychic:{name:"Psíquico",icon:"🔮"},
-bug:{name:"Inseto",icon:"🐛"},
-rock:{name:"Pedra",icon:"🪨"},
-ghost:{name:"Fantasma",icon:"👻"},
-dragon:{name:"Dragão",icon:"🐉"},
-dark:{name:"Sombrio",icon:"🌑"},
-steel:{name:"Aço",icon:"⚙️"},
-fairy:{name:"Fada",icon:"🧚"}
-
+    normal:{name:"Normal",icon:"⚪"},
+    fire:{name:"Fogo",icon:"🔥"},
+    water:{name:"Água",icon:"💧"},
+    electric:{name:"Elétrico",icon:"⚡"},
+    grass:{name:"Planta",icon:"🌿"},
+    ice:{name:"Gelo",icon:"❄️"},
+    fighting:{name:"Lutador",icon:"🥊"},
+    poison:{name:"Veneno",icon:"☠️"},
+    ground:{name:"Terrestre",icon:"🌎"},
+    flying:{name:"Voador",icon:"🪽"},
+    psychic:{name:"Psíquico",icon:"🔮"},
+    bug:{name:"Inseto",icon:"🐛"},
+    rock:{name:"Pedra",icon:"🪨"},
+    ghost:{name:"Fantasma",icon:"👻"},
+    dragon:{name:"Dragão",icon:"🐉"},
+    dark:{name:"Sombrio",icon:"🌑"},
+    steel:{name:"Aço",icon:"⚙️"},
+    fairy:{name:"Fada",icon:"🧚"}
 };
-
-
 /* ELEMENTOS */
-
-const grid =
-    document.getElementById("pokedexGrid");
-
-const count =
-    document.getElementById("resultsCount");
-
-const pagination =
-    document.getElementById("pagination");
-
-const filters =
-    document.getElementById("filters");
-
-const searchInput =
-    document.getElementById("searchInput");
-
-const searchButton =
-    document.getElementById("searchButton");
-
-const shinyToggle =
-    document.getElementById("shinyToggle");
-
-const shinyGrid =
-    document.getElementById("shinyGrid");
-
-
+const grid = document.getElementById("pokedexGrid");
+const count = document.getElementById("resultsCount");
+const pagination = document.getElementById("pagination");
+const filters = document.getElementById("filters");
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const shinyToggle = document.getElementById("shinyToggle");
+const shinyGrid = document.getElementById("shinyGrid");
 /* FILTROS */
-
 function createFilters(){
-
     filters.innerHTML = "";
-
     const all = document.createElement("button");
-
-    all.className =
-        "filter-button active";
-
-    all.textContent =
-        "🌎 Todos";
-
+    all.className = "filter-button active";
+    all.textContent = "🌎 Todos";
     all.onclick = () => {
-
         currentType = "all";
         currentPage = 1;
         searchMode = false;
-
+        searchResults = [];
         document
             .querySelectorAll(".filter-button")
-            .forEach(b =>
-                b.classList.remove("active")
+            .forEach(button =>
+                button.classList.remove("active")
             );
-
         all.classList.add("active");
-
         loadPage();
-
     };
-
     filters.appendChild(all);
-
-
-    Object.entries(types).forEach(
-        ([key,type]) => {
-
-            const button =
-                document.createElement("button");
-
-            button.className =
-                "filter-button";
-
-            button.textContent =
-                `${type.icon} ${type.name}`;
-
-            button.onclick = () => {
-
-                currentType = key;
-                currentPage = 1;
-                searchMode = false;
-
-                document
-                    .querySelectorAll(".filter-button")
-                    .forEach(b =>
-                        b.classList.remove("active")
-                    );
-
-                button.classList.add("active");
-
-                loadPage();
-
-            };
-
-            filters.appendChild(button);
-
-        }
-    );
-
+    Object.entries(types).forEach(([key,type]) => {
+        const button = document.createElement("button");
+        button.className = "filter-button";
+        button.textContent = `${type.icon} ${type.name}`;
+        button.onclick = () => {
+            currentType = key;
+            currentPage = 1;
+            searchMode = false;
+            searchResults = [];
+            document
+                .querySelectorAll(".filter-button")
+                .forEach(button =>
+                    button.classList.remove("active")
+                );
+            button.classList.add("active");
+            loadPage();
+        };
+        filters.appendChild(button);
+    });
 }
-
-
 /* FORMATAR NOME */
-
 function formatName(name){
-
     return name
         .split("-")
         .map(word =>
-            word.charAt(0).toUpperCase()
-            + word.slice(1)
+            word.charAt(0).toUpperCase() + word.slice(1)
         )
         .join(" ");
-
 }
-
-
 /* CARD */
-
 function createCard(pokemon){
-
-    const card =
-        document.createElement("article");
-
-    card.className =
-        "pokedex-card";
-
-
+    const card = document.createElement("article");
+    card.className = "pokedex-card";
+    const artwork =
+        pokemon.sprites.other &&
+        pokemon.sprites.other["official-artwork"];
     const normal =
-        pokemon.sprites.other["official-artwork"].front_default
-        || pokemon.sprites.front_default;
-
-
+        artwork?.front_default ||
+        pokemon.sprites.front_default;
     const shiny =
-        pokemon.sprites.other["official-artwork"].front_shiny
-        || pokemon.sprites.front_shiny;
-
-
-    const image =
-        shinyMode ? shiny : normal;
-
-
+        artwork?.front_shiny ||
+        pokemon.sprites.front_shiny;
+    const image = shinyMode ? shiny : normal;
     let typeHTML = "";
-
-
     pokemon.types.forEach(item => {
-
-        const key =
-            item.type.name;
-
-        const type =
-            types[key];
-
+        const key = item.type.name;
+        const type = types[key];
         if(type){
-
             typeHTML += `
-
                 <span class="type-badge type-${key}">
-
-                    ${type.icon}
-                    ${type.name}
-
+                    ${type.icon} ${type.name}
                 </span>
-
             `;
-
         }
-
     });
-
-
     card.innerHTML = `
-
         <span class="pokemon-number">
             #${String(pokemon.id).padStart(4,"0")}
         </span>
-
         ${
             shinyMode
             ?
@@ -1435,58 +1073,34 @@ function createCard(pokemon){
             :
             ""
         }
-
         <img
             class="pokemon-image"
             src="${image}"
             alt="${formatName(pokemon.name)}"
             loading="lazy"
         >
-
         <div class="pokemon-info">
-
             <h3 class="pokemon-name">
                 ${formatName(pokemon.name)}
             </h3>
-
             <div class="type-list">
                 ${typeHTML}
             </div>
-
         </div>
-
     `;
-
-
     return card;
-
 }
-
-
 /* BUSCAR DADOS */
-
 async function getPokemon(id){
-
-    const response =
-        await fetch(`${API}/${id}`);
-
+    const response = await fetch(`${API}/${id}`);
     if(!response.ok){
-
         throw new Error("Erro ao carregar Pokémon");
-
     }
-
     return response.json();
-
 }
-
-
 /* CARREGAR PÁGINA */
-
 async function loadPage(){
-
     grid.innerHTML = `
-
         <div style="
             grid-column:1/-1;
             text-align:center;
@@ -1495,695 +1109,362 @@ async function loadPage(){
         ">
             🔄 Carregando Pokémon...
         </div>
-
     `;
-
     pagination.innerHTML = "";
-
-
     try{
-
         if(searchMode){
-
             renderSearch();
-
             return;
-
         }
-
-
-        let ids = [];
-
         const start =
             (currentPage - 1) * PER_PAGE + 1;
-
         const end =
             Math.min(
                 start + PER_PAGE - 1,
                 TOTAL_POKEMON
             );
-
-
-        for(
-            let i = start;
-            i <= end;
-            i++
-        ){
-
+        const ids = [];
+        for(let i = start; i <= end; i++){
             ids.push(i);
-
         }
-
-
         const pokemons =
             await Promise.all(
                 ids.map(getPokemon)
             );
-
-
-        let filtered =
-            pokemons;
-
-
+        let filtered = pokemons;
         if(currentType !== "all"){
-
-            filtered =
-                pokemons.filter(
-                    pokemon =>
-                        pokemon.types.some(
-                            item =>
-                                item.type.name
-                                === currentType
-                        )
-                );
-
+            filtered = pokemons.filter(pokemon =>
+                pokemon.types.some(item =>
+                    item.type.name === currentType
+                )
+            );
         }
-
-
         grid.innerHTML = "";
-
-
         if(filtered.length === 0){
-
             grid.innerHTML = `
-
                 <div style="
                     grid-column:1/-1;
                     text-align:center;
                     padding:60px;
                     color:#8994a5;
                 ">
-
-                    Nenhum Pokémon deste tipo
-                    nesta página.
-
+                    Nenhum Pokémon deste tipo nesta página.
                 </div>
-
             `;
-
         }else{
-
-            filtered.forEach(
-                pokemon =>
-                    grid.appendChild(
-                        createCard(pokemon)
-                    )
+            filtered.forEach(pokemon =>
+                grid.appendChild(createCard(pokemon))
             );
-
         }
-
-
         count.textContent =
             `Pokémon ${start}–${end} de ${TOTAL_POKEMON}`;
-
-
         createPagination();
-
     }catch(error){
-
         console.error(error);
-
         grid.innerHTML = `
-
             <div style="
                 grid-column:1/-1;
                 text-align:center;
                 padding:60px;
                 color:#ff6b6b;
             ">
-
-                Não foi possível carregar
-                a Pokédex.
-
+                Não foi possível carregar a Pokédex.
                 <br><br>
-
                 Tente atualizar a página.
-
             </div>
-
         `;
-
     }
-
 }
-
-
 /* PAGINAÇÃO */
-
 function createPagination(){
-
     pagination.innerHTML = "";
-
-
     const totalPages =
         Math.ceil(TOTAL_POKEMON / PER_PAGE);
-
-
     const previous =
         document.createElement("button");
-
-    previous.className =
-        "page-button";
-
-    previous.textContent =
-        "‹";
-
-    previous.disabled =
-        currentPage === 1;
-
+    previous.className = "page-button";
+    previous.textContent = "‹";
+    previous.disabled = currentPage === 1;
     previous.onclick = () => {
-
         if(currentPage > 1){
-
             currentPage--;
-
             loadPage();
-
             document
                 .getElementById("pokedex")
                 .scrollIntoView({
                     behavior:"smooth"
                 });
-
         }
-
     };
-
     pagination.appendChild(previous);
-
-
     let start =
         Math.max(1,currentPage - 2);
-
     let end =
         Math.min(totalPages,currentPage + 2);
-
-
     if(currentPage <= 3){
         end = Math.min(5,totalPages);
     }
-
-
     if(currentPage >= totalPages - 2){
         start = Math.max(1,totalPages - 4);
     }
-
-
-    for(
-        let page = start;
-        page <= end;
-        page++
-    ){
-
+    for(let page = start; page <= end; page++){
         const button =
             document.createElement("button");
-
-        button.className =
-            "page-button";
-
+        button.className = "page-button";
         if(page === currentPage){
             button.classList.add("active");
         }
-
-        button.textContent =
-            page;
-
+        button.textContent = page;
         button.onclick = () => {
-
             currentPage = page;
-
             loadPage();
-
             document
                 .getElementById("pokedex")
                 .scrollIntoView({
                     behavior:"smooth"
                 });
-
         };
-
         pagination.appendChild(button);
-
     }
-
-
     const next =
         document.createElement("button");
-
-    next.className =
-        "page-button";
-
-    next.textContent =
-        "›";
-
-    next.disabled =
-        currentPage === totalPages;
-
+    next.className = "page-button";
+    next.textContent = "›";
+    next.disabled = currentPage === totalPages;
     next.onclick = () => {
-
         if(currentPage < totalPages){
-
             currentPage++;
-
             loadPage();
-
             document
                 .getElementById("pokedex")
                 .scrollIntoView({
                     behavior:"smooth"
                 });
-
         }
-
     };
-
     pagination.appendChild(next);
-
 }
-
-
 /* PESQUISA */
-
 async function searchPokemon(){
-
     const value =
         searchInput.value
             .trim()
             .toLowerCase();
-
-
     if(!value){
-
         searchMode = false;
-
         currentPage = 1;
-
         loadPage();
-
         return;
-
     }
-
-
     searchMode = true;
-
     grid.innerHTML = `
-
         <div style="
             grid-column:1/-1;
             text-align:center;
             padding:60px;
             color:#8994a5;
         ">
-
             🔎 Procurando...
-
         </div>
-
     `;
-
     pagination.innerHTML = "";
-
-
     try{
-
         let results = [];
-
-
         if(!isNaN(value)){
-
-            const id =
-                Number(value);
-
-            if(
-                id >= 1 &&
-                id <= TOTAL_POKEMON
-            ){
-
-                results.push(
-                    await getPokemon(id)
-                );
-
+            const id = Number(value);
+            if(id >= 1 && id <= TOTAL_POKEMON){
+                results.push(await getPokemon(id));
             }
-
         }else{
-
             const response =
                 await fetch(
                     `${API}?limit=${TOTAL_POKEMON}`
                 );
-
-            const data =
-                await response.json();
-
-
+            const data = await response.json();
             const matches =
-                data.results.filter(
-                    pokemon =>
-                        pokemon.name
-                        .includes(value)
+                data.results.filter(pokemon =>
+                    pokemon.name.includes(value)
                 );
-
-
             results =
                 await Promise.all(
-                    matches.map(
-                        pokemon =>
-                            getPokemon(
-                                pokemon.name
-                            )
+                    matches.map(pokemon =>
+                        getPokemon(pokemon.name)
                     )
                 );
-
         }
-
-
         searchResults = results;
-
         renderSearch();
-
-
     }catch(error){
-
         console.error(error);
-
         grid.innerHTML = `
-
             <div style="
                 grid-column:1/-1;
                 text-align:center;
                 padding:60px;
                 color:#ff6b6b;
             ">
-
                 Erro ao realizar a busca.
-
             </div>
-
         `;
-
     }
-
 }
-
-
-/* MOSTRAR RESULTADO DA BUSCA */
-
+/* RESULTADO DA BUSCA */
 function renderSearch(){
-
     grid.innerHTML = "";
-
     pagination.innerHTML = "";
-
-
-    let results =
-        searchResults;
-
-
+    let results = searchResults;
     if(currentType !== "all"){
-
         results =
-            results.filter(
-                pokemon =>
-                    pokemon.types.some(
-                        item =>
-                            item.type.name
-                            === currentType
-                    )
+            results.filter(pokemon =>
+                pokemon.types.some(item =>
+                    item.type.name === currentType
+                )
             );
-
     }
-
-
     if(results.length === 0){
-
         grid.innerHTML = `
-
             <div style="
                 grid-column:1/-1;
                 text-align:center;
                 padding:60px;
                 color:#8994a5;
             ">
-
                 🔎 Nenhum Pokémon encontrado.
-
             </div>
-
         `;
-
-        count.textContent =
-            "Nenhum resultado";
-
+        count.textContent = "Nenhum resultado";
         return;
-
     }
-
-
-    results.forEach(
-        pokemon =>
-            grid.appendChild(
-                createCard(pokemon)
-            )
+    results.forEach(pokemon =>
+        grid.appendChild(createCard(pokemon))
     );
-
-
     count.textContent =
         `${results.length} Pokémon encontrado(s)`;
-
 }
-
-
 /* SHINY */
-
 async function loadShiny(){
-
-    const ids =
-        [25,6,150,149,133,448];
-
-
+    const ids = [25,6,150,149,133,448];
     shinyGrid.innerHTML = "";
-
-
     try{
-
         const pokemons =
             await Promise.all(
                 ids.map(getPokemon)
             );
-
-
-        pokemons.forEach(
-            pokemon => {
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "shiny-card";
-
-
-                const shiny =
-                    pokemon.sprites.other[
-                        "official-artwork"
-                    ].front_shiny
-                    || pokemon.sprites.front_shiny;
-
-
-                card.innerHTML = `
-
-                    <div class="shiny-info">
-
-                        <small>✨ SHINY</small>
-
-                        <h3>
-                            ${formatName(pokemon.name)}
-                        </h3>
-
-                        <p>
-                            #${String(pokemon.id).padStart(4,"0")}
-                        </p>
-
-                    </div>
-
-                    <img
-                        class="shiny-image"
-                        src="${shiny}"
-                        alt="${formatName(pokemon.name)} Shiny"
-                        loading="lazy"
-                    >
-
-                `;
-
-
-                shinyGrid.appendChild(card);
-
-            }
-        );
-
+        pokemons.forEach(pokemon => {
+            const card =
+                document.createElement("div");
+            card.className = "shiny-card";
+            const artwork =
+                pokemon.sprites.other &&
+                pokemon.sprites.other["official-artwork"];
+            const shiny =
+                artwork?.front_shiny ||
+                pokemon.sprites.front_shiny;
+            card.innerHTML = `
+                <div class="shiny-info">
+                    <small>✨ SHINY</small>
+                    <h3>
+                        ${formatName(pokemon.name)}
+                    </h3>
+                    <p>
+                        #${String(pokemon.id).padStart(4,"0")}
+                    </p>
+                </div>
+                <img
+                    class="shiny-image"
+                    src="${shiny}"
+                    alt="${formatName(pokemon.name)} Shiny"
+                    loading="lazy"
+                >
+            `;
+            shinyGrid.appendChild(card);
+        });
     }catch(error){
-
         shinyGrid.innerHTML = `
             <p style="color:#8994a5">
                 Não foi possível carregar os Shiny.
             </p>
         `;
-
     }
-
 }
-
-
 /* BOTÃO SHINY */
-
 shinyToggle.onclick = () => {
-
-    shinyMode =
-        !shinyMode;
-
+    shinyMode = !shinyMode;
     shinyToggle.classList.toggle(
         "active",
         shinyMode
     );
-
     shinyToggle.textContent =
         shinyMode
         ? "✨ Shiny ativado"
         : "✨ Mostrar Shiny";
-
-
     if(searchMode){
-
         renderSearch();
-
     }else{
-
         loadPage();
-
     }
-
 };
-
-
-/* BOTÃO BUSCAR */
-
-searchButton.onclick =
-    searchPokemon;
-
-
-/* ENTER NA BUSCA */
-
+/* BUSCA */
+searchButton.onclick = searchPokemon;
 searchInput.addEventListener(
     "keydown",
     event => {
-
         if(event.key === "Enter"){
-
             searchPokemon();
-
         }
-
     }
 );
-
-
-/* MODAL */
-
+/* MODAL DE BOAS-VINDAS */
 const overlay =
-    document.getElementById(
-        "welcomeOverlay"
-    );
-
+    document.getElementById("welcomeOverlay");
 const closeButton =
-    document.getElementById(
-        "welcomeClose"
-    );
-
+    document.getElementById("welcomeClose");
 const welcomeButton =
-    document.getElementById(
-        "welcomeButton"
-    );
-
-
+    document.getElementById("welcomeButton");
+/*
+    IMPORTANTE:
+    Não existe mais localStorage aqui.
+    O modal sempre começa fechado e,
+    depois de 500ms, é aberto.
+    Portanto ele aparece toda vez
+    que a página é carregada.
+*/
 function closeWelcome(){
-
     overlay.classList.remove("active");
-
-    localStorage.setItem(
-        "pokecommunity_welcome",
-        "seen"
-    );
-
 }
-
-
-closeButton.onclick =
-    closeWelcome;
-
-
-welcomeButton.onclick =
-    () => {
-
+closeButton.onclick = closeWelcome;
+welcomeButton.onclick = () => {
+    closeWelcome();
+    document
+        .getElementById("pokedex")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+};
+overlay.onclick = event => {
+    if(event.target === overlay){
         closeWelcome();
-
-        document
-            .getElementById("pokedex")
-            .scrollIntoView({
-                behavior:"smooth"
-            });
-
-    };
-
-
-overlay.onclick =
-    event => {
-
-        if(event.target === overlay){
-            closeWelcome();
-        }
-
-    };
-
-
+    }
+};
 document.addEventListener(
     "keydown",
     event => {
-
         if(event.key === "Escape"){
             closeWelcome();
         }
-
     }
 );
-
-
 /* INICIAR */
-
 createFilters();
-
 loadPage();
-
 loadShiny();
-
-
-if(
-    !localStorage.getItem(
-        "pokecommunity_welcome"
-    )
-){
-
-    setTimeout(
-        () => {
-
-            overlay.classList.add("active");
-
-        },
-        500
-    );
-
-}
-
+/*
+    O modal aparece SEMPRE que o index.html
+    for carregado.
+*/
+setTimeout(() => {
+    overlay.classList.add("active");
+},500);
 </script>
-
 </body>
 </html>
